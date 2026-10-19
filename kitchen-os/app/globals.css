@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* 1. THE TRIGGER: This tells Tailwind to use the manual .dark class. 
+   (You can safely ignore any VS Code warnings on this line!) */
+@variant dark (&:where(.dark, .dark *));
+
+/* 2. BASE LIGHT MODE COLORS */
+:root {
+  --background: #f9fafb;
+  /* Matches Tailwind's gray-50 */
+  --foreground: #111827;
+  /* Matches Tailwind's gray-900 */
+}
+
+/* 3. BASE DARK MODE COLORS */
+.dark {
+  --background: #111827;
+  /* Matches Tailwind's gray-900 */
+  --foreground: #f9fafb;
+  /* Matches Tailwind's gray-50 */
+}
+
+/* 4. APPLY TO ENTIRE APP */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 5. YOUR CUSTOM UTILITIES */
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hide scrollbar for horizontal scrolling rows */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

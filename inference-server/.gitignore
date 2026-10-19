@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+cache/
+debug_audio/
+*.pyc
