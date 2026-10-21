@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allow connections from your local network IP
+  allowedDevOrigins: ["192.168.1.153"],
+  
   images: {
     remotePatterns: [
-      // Google Images (from your error)
+      // Google Images
       { protocol: "https",
          hostname: "encrypted-tbn0.gstatic.com",
           pathname: "/**" },

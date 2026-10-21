@@ -155,7 +155,7 @@ export default function CreateRecipePage() {
         });
       }
 
-      // --- NEW: KOKORO TTS PREWARM ---
+      // --- KOKORO TTS PREWARM ---
       if (validSteps.length > 0) {
         // We do NOT 'await' this fetch. It runs in the background so the UI doesn't 
         // freeze for 10-30 seconds while Kokoro generates the audio.

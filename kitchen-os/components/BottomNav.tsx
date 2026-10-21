@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Compass, Bookmark, User, Refrigerator } from "lucide-react";
+import { Home, Compass, Bookmark, User} from "lucide-react"; // Removed Refrigerator icon since it's not used in the nav items
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -10,7 +10,7 @@ export default function BottomNav() {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Explore", path: "/explore", icon: Compass },
-    { name: "Pantry", path: "/pantry", icon: Refrigerator },
+    // { name: "Pantry", path: "/pantry", icon: Refrigerator },
     { name: "Cook Later", path: "/cook-later", icon: Bookmark },
     { name: "Profile", path: "/profile", icon: User },
   ];
