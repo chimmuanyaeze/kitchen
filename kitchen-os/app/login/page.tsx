@@ -139,7 +139,7 @@ export default function LoginPage() {
         `}</style>
         <div className="flex flex-col items-center animate-in fade-in zoom-in duration-500">
           <div className="w-32 h-32 relative mb-8 animate-heartbeat drop-shadow-2xl">
-            <Image src="/icon.png" alt="Kitchen OS Icon" fill className="object-contain" priority />
+            <Image src="/logo.png" alt="Kitchen OS Icon" fill className="object-contain" priority />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white animate-in slide-in-from-bottom-2 fade-in duration-500">
             {loadingText}

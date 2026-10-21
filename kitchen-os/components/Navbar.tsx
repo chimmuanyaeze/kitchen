@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-black text-xl text-gray-900 dark:text-white">
           <Image 
-            src="/icon.png" 
+            src="/logo.png" 
             alt="Kitchen OS Logo" 
             width={24} 
             height={24} 

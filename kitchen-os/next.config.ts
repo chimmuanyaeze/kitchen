@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Allow connections from your local network IP
-  allowedDevOrigins: ["192.168.1.153"],
+  allowedDevOrigins: ["192.168.1.153","localhost:3000", "http://localhost:3000"],
   
   images: {
     remotePatterns: [
@@ -48,6 +48,14 @@ const nextConfig: NextConfig = {
         pathname: "/**", 
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/engine/:path*',
+        destination: 'http://187.126.7.169:8000/:path*', // Securely routes traffic to your Hostinger VPS
+      },
+      ]
   },
 };
 
