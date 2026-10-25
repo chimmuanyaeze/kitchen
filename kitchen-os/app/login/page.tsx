@@ -32,13 +32,32 @@ export default function LoginPage() {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setErrorMessage("");
     setSuccessMessage("");
 
+    // --- Frontend Validation Check ---
+    if (!email.trim() && !password.trim()) {
+      setErrorMessage("Please enter both your email address and a password to create an account.");
+      return;
+    }
+    if (!email.trim()) {
+      setErrorMessage("Please enter your email address.");
+      return;
+    }
+    if (!password.trim()) {
+      setErrorMessage("Please enter a password to secure your account.");
+      return;
+    }
+    if (password.length < 6) {
+      setErrorMessage("Your password must be at least 6 characters long.");
+      return;
+    }
+
+    setLoading(true);
+
     // 1. Capture both 'data' and 'error' from Supabase
     const { data, error } = await supabase.auth.signUp({
-      email,
+      email: email.trim(),
       password,
     });
 
@@ -61,12 +80,18 @@ export default function LoginPage() {
   // --- Verify the OTP Code ---
   const handleVerifyOTP = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setErrorMessage("");
     setSuccessMessage("");
 
+    if (!otpCode.trim() || otpCode.length !== 6) {
+      setErrorMessage("Please enter the full 6-digit verification code.");
+      return;
+    }
+
+    setLoading(true);
+
     const { error } = await supabase.auth.verifyOtp({
-      email,
+      email: email.trim(),
       token: otpCode,
       type: "signup",
     });
@@ -82,19 +107,33 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setErrorMessage("");
     setSuccessMessage("");
 
+    // --- Frontend Validation Check ---
+    if (!email.trim() && !password.trim()) {
+      setErrorMessage("Please enter your email address and password to log in.");
+      return;
+    }
+    if (!email.trim()) {
+      setErrorMessage("Please enter your email address.");
+      return;
+    }
+    if (!password.trim()) {
+      setErrorMessage("Please enter your password.");
+      return;
+    }
+
+    setLoading(true);
+
     const { error } = await supabase.auth.signInWithPassword({
-      email,
+      email: email.trim(),
       password,
     });
 
     if (error) {
       if (error.message.includes("Email not confirmed")) {
         setErrorMessage("Please verify your email address before logging in.");
-        // Optionally switch to the OTP screen here so they can request a new one
       } else {
         setErrorMessage(error.message);
       }
