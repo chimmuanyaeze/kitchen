@@ -36,23 +36,29 @@ export default function LoginPage() {
     setErrorMessage("");
     setSuccessMessage("");
 
-    // 1. Send the OTP to the user's email
-    const { error } = await supabase.auth.signUp({
+    // 1. Capture both 'data' and 'error' from Supabase
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
       setErrorMessage(error.message);
+      setLoading(false);
+    } else if (data.session) {
+      // 2. Email Confirmation is OFF in Supabase:
+      // User is immediately logged in, trigger the heartbeat animation!
+      triggerSuccessSequence("signup");
     } else {
-      // 2. Switch the UI to ask for the code
+      // 3. Email Confirmation is ON in Supabase:
+      // No session yet, switch the UI to ask for the 6-digit OTP code
       setSuccessMessage("A 6-digit code has been sent to your email.");
       setShowOTP(true);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  // --- NEW: Verify the OTP Code ---
+  // --- Verify the OTP Code ---
   const handleVerifyOTP = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
