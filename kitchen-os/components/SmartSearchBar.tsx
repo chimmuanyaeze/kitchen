@@ -88,7 +88,6 @@ export default function SmartSearchBar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Convert selected file to compressed Base64
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorBanner(null);
     const file = e.target.files?.[0];
@@ -202,7 +201,7 @@ export default function SmartSearchBar({
 
     setIsGeneratingAI(true);
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout protection
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
     try {
       const res = await fetch("/api/cook-with-ai", {
@@ -241,7 +240,6 @@ export default function SmartSearchBar({
         return;
       }
 
-      // Store result in sessionStorage and either invoke callback or navigate to /search?mode=ai
       sessionStorage.setItem("kitchen_os_ai_recipe", JSON.stringify(data));
       if (onAIResult) {
         onAIResult(data);
@@ -308,117 +306,126 @@ export default function SmartSearchBar({
         </div>
       )}
 
-      {/* Main Pill Input Bar (Matches Reference Layout) */}
+      {/* Responsive Container:
+          - Mobile (< md): 2-row rounded-3xl card so input gets 100% width on Row 1
+          - Desktop (md+): Single horizontal pill (rounded-full) matching reference */}
       <form
         onSubmit={handleDatabaseSearch}
-        className="relative flex items-center w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-2 shadow-md focus-within:ring-2 focus-within:ring-blue-500 transition-all"
+        className="relative flex flex-col md:flex-row md:items-center w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl md:rounded-full p-2.5 md:px-3 md:py-2 shadow-md focus-within:ring-2 focus-within:ring-blue-500 transition-all gap-2 md:gap-1.5"
       >
-        {/* Left "+" Button & Dropdown Menu */}
-        <div className="relative" ref={menuRef}>
-          <button
-            type="button"
-            onClick={() => setShowPlusMenu((prev) => !prev)}
-            className="p-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-            title="Add photo"
-            aria-label="Add photo"
-          >
-            <Plus className="w-5 h-5" />
-          </button>
+        {/* Top Row on Mobile / Left+Center on Desktop */}
+        <div className="flex items-center w-full md:flex-1 min-w-0">
+          {/* Left "+" Button & Dropdown Menu */}
+          <div className="relative shrink-0" ref={menuRef}>
+            <button
+              type="button"
+              onClick={() => setShowPlusMenu((prev) => !prev)}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+              title="Add photo"
+              aria-label="Add photo"
+            >
+              <Plus className="w-5 h-5" />
+            </button>
 
-          {showPlusMenu && (
-            <div className="absolute left-0 mt-3 w-48 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-40 animate-in fade-in zoom-in-95 duration-150">
-              <button
-                type="button"
-                onClick={() => uploadInputRef.current?.click()}
-                className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
-              >
-                <Upload className="w-4 h-4 text-blue-500" />
-                Upload photo
-              </button>
-              <button
-                type="button"
-                onClick={() => cameraInputRef.current?.click()}
-                className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
-              >
-                <Camera className="w-4 h-4 text-emerald-500" />
-                Take photo
-              </button>
-            </div>
-          )}
+            {showPlusMenu && (
+              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-40 animate-in fade-in zoom-in-95 duration-150">
+                <button
+                  type="button"
+                  onClick={() => uploadInputRef.current?.click()}
+                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
+                >
+                  <Upload className="w-4 h-4 text-blue-500" />
+                  Upload photo
+                </button>
+                <button
+                  type="button"
+                  onClick={() => cameraInputRef.current?.click()}
+                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
+                >
+                  <Camera className="w-4 h-4 text-emerald-500" />
+                  Take photo
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Text Input - Guaranteed full width on mobile & flex-1 on desktop */}
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              if (errorBanner) setErrorBanner(null);
+            }}
+            placeholder="Search recipes or enter your ingredients..."
+            className="w-full flex-1 min-w-[140px] bg-transparent px-2.5 py-1.5 text-sm sm:text-base text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none"
+          />
         </div>
 
-        {/* Center Text Input */}
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            if (errorBanner) setErrorBanner(null);
-          }}
-          placeholder="Search recipes or enter your ingredients..."
-          className="flex-1 min-w-0 bg-transparent px-3 py-2 text-sm sm:text-base text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none"
-        />
+        {/* Bottom Action Toolbar on Mobile / Right Side on Desktop */}
+        <div className="flex items-center justify-between md:justify-end gap-1.5 pt-2 md:pt-0 border-t border-gray-100 dark:border-gray-700/60 md:border-t-0 shrink-0">
+          {/* Mic & Quick Camera Icons */}
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={toggleMicRecording}
+              disabled={isTranscribing}
+              title={isRecording ? "Stop recording" : "Voice input"}
+              aria-label="Voice input"
+              className={`p-2 rounded-full transition-all ${
+                isRecording
+                  ? "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 animate-pulse"
+                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+              }`}
+            >
+              {isTranscribing ? (
+                <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
+              ) : (
+                <Mic className="w-5 h-5" />
+              )}
+            </button>
 
-        {/* Right Action Icons (Mic & Quick Camera) */}
-        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
-          <button
-            type="button"
-            onClick={toggleMicRecording}
-            disabled={isTranscribing}
-            title={isRecording ? "Stop recording" : "Voice input"}
-            aria-label="Voice input"
-            className={`p-2 rounded-full transition-all ${
-              isRecording
-                ? "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 animate-pulse"
-                : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-            }`}
-          >
-            {isTranscribing ? (
-              <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
-            ) : (
-              <Mic className="w-5 h-5" />
-            )}
-          </button>
+            <button
+              type="button"
+              onClick={() => cameraInputRef.current?.click()}
+              title="Take photo"
+              aria-label="Take photo"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+            >
+              <Camera className="w-5 h-5" />
+            </button>
+          </div>
 
-          <button
-            type="button"
-            onClick={() => cameraInputRef.current?.click()}
-            title="Take photo"
-            aria-label="Take photo"
-            className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-          >
-            <Camera className="w-5 h-5" />
-          </button>
+          {/* Search & Cook with AI Pill Buttons */}
+          <div className="flex items-center gap-1.5">
+            <button
+              type="submit"
+              disabled={isGeneratingAI}
+              className="px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center gap-1.5"
+            >
+              <Search className="w-4 h-4" />
+              <span>Search</span>
+            </button>
 
-          {/* 1. Normal Database SEARCH Button */}
-          <button
-            type="submit"
-            disabled={isGeneratingAI}
-            className="px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center gap-1.5"
-          >
-            <Search className="w-4 h-4" />
-            <span className="hidden sm:inline">Search</span>
-          </button>
-
-          {/* 2. COOK WITH AI Pill Button (Far Right) */}
-          <button
-            type="button"
-            onClick={handleCookWithAI}
-            disabled={isGeneratingAI}
-            className="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-95 transition-all shadow-sm flex items-center gap-1.5 disabled:opacity-60"
-          >
-            {isGeneratingAI ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Cooking...</span>
-              </>
-            ) : (
-              <>
-                <Sparkles className="w-4 h-4" />
-                <span>Cook with AI</span>
-              </>
-            )}
-          </button>
+            <button
+              type="button"
+              onClick={handleCookWithAI}
+              disabled={isGeneratingAI}
+              className="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-95 transition-all shadow-sm flex items-center gap-1.5 disabled:opacity-60 whitespace-nowrap"
+            >
+              {isGeneratingAI ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Cooking...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" />
+                  <span>Cook with AI</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </form>
 
