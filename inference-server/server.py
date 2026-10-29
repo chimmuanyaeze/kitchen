@@ -24,8 +24,16 @@ from fastapi.responses import Response
 from faster_whisper import WhisperModel
 from kokoro import KPipeline
 from starlette.concurrency import run_in_threadpool
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="kitchen-os inference server")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "https://kitchen-six-wheat.vercel.app"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 API_KEY = os.environ.get("INFERENCE_API_KEY")
 
