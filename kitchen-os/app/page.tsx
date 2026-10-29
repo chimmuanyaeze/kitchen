@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
-import { Search, Play, Trash2, ChefHat } from "lucide-react";
+import { Play, Trash2, ChefHat } from "lucide-react";
 import { Recipe, ActiveSessionWithRecipe } from "@/lib/types";
 import Link from "next/link";
 import RecipeCard from "@/components/RecipeCard";
 import SkeletonLoader from "@/components/SkeletonLoader";
+import SmartSearchBar from "@/components/SmartSearchBar";
 
 export default function Home() {
   const router = useRouter();
@@ -116,22 +117,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Ingredient Search Bar */}
-      <form onSubmit={handleSearch} className="relative mb-8 w-full">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-gray-700 dark:text-gray-400" />
-        </div>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-colors duration-200"
-          placeholder="What's in your kitchen? (e.g., eggs, rice)"
-        />
-        <button type="submit" className="hidden">
-          Search
-        </button>
-      </form>
+      {/* Smart Dual-Mode Search Bar */}
+      <SmartSearchBar />
 
       {/* Continue Cooking */}
       {activeSessions.length > 0 && (

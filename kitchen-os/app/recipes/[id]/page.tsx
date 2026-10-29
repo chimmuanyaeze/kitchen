@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { Clock, Users, ArrowLeft, Heart, BookmarkPlus, Play, Star, AlertTriangle, ChefHat} from "lucide-react";
+import { Clock, Users, ArrowLeft, Heart, BookmarkPlus, Play, Star, ChefHat } from "lucide-react";
 import { RecipeDetail, RecipeStep, Review } from "@/lib/types";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import { jarvisAutoDeduct } from "@/lib/jarvis";
 import Image from "next/image";
-
 
 export default function RecipeDetailPage() {
   
@@ -22,11 +20,6 @@ export default function RecipeDetailPage() {
   const [isSaved, setIsSaved] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  // FOR THE PANTRY + COOKING DEDUCTION
-  const [isCooking, setIsCooking] = useState(false);
-  const [deductionStatus, setDeductionStatus] = useState<string | null>(null);
-  const [showShortageModal, setShowShortageModal] = useState(false);
-
   // --- LIKE BUTTON STATE ---
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -39,8 +32,6 @@ export default function RecipeDetailPage() {
   const [comment, setComment] = useState("");
   const [isSubmittingReview, setIsSubmittingReview] = useState(false);
   const [hoveredStar, setHoveredStar] = useState(0); 
-
- 
 
   useEffect(() => {
     async function fetchRecipeDetails() {
@@ -83,7 +74,7 @@ export default function RecipeDetailPage() {
         console.error("Error fetching recipe:", error.message);
       } else {
         if (data.recipe_steps) {
-          data.recipe_steps.sort((a:RecipeStep, b:RecipeStep) => a.step_number - b.step_number);
+          data.recipe_steps.sort((a: RecipeStep, b: RecipeStep) => a.step_number - b.step_number);
         }
         setRecipe(data);
       }
@@ -132,30 +123,6 @@ export default function RecipeDetailPage() {
     fetchReviews();
   }, [recipe?.id]);
 
-  const startCookingSequence = () => {
-    setShowShortageModal(false);
-    // Add your cooking timer or step-by-step UI logic here
-    alert("Cooking Sequence Initiated! (Bypassed Pantry Check)"); 
-  };
-
-  const handleCookAction = async () => {
-    if (!currentUserId || !recipe?.id) return;
-    
-    setIsCooking(true);
-
-    const result = await jarvisAutoDeduct(recipe.id, currentUserId);
-
-    if (result.success) {
-      // They had everything! Deduct and proceed seamlessly.
-      startCookingSequence();
-    } else {
-      // 🚀 CHANGED: They are missing things. Pop the modal instead of a red error text.
-      setShowShortageModal(true);
-    }
-    
-    setIsCooking(false);
-  };
-
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUserId) {
@@ -187,7 +154,6 @@ export default function RecipeDetailPage() {
     }
     setIsSubmittingReview(false);
   };
-
 
   const handleLikeToggle = async (e?: React.MouseEvent) => {
     if (e) e.preventDefault(); 
@@ -297,13 +263,12 @@ export default function RecipeDetailPage() {
   }
 
   return (
-    // Added dark:bg-gray-900, w-full, and transition smoothers
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
       
      {/* --- HERO IMAGE BANNER --- */}
       <div className="w-full relative aspect-video md:h-[400px] md:aspect-auto bg-slate-100 dark:bg-slate-800 overflow-hidden">
         
-        {/* The Back Button (Restored) */}
+        {/* The Back Button */}
         <button
           type="button"
           title="Go back"
@@ -328,26 +293,21 @@ export default function RecipeDetailPage() {
           </div>
         )}
         
-        {/* Subtle gradient overlay to ensure the back button is always readable */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/30 pointer-events-none z-10" />
       </div>
 
       {/* Main Content Layout Block */}
-      {/* Added dark:bg-gray-900, w-full, max-w-4xl, and mx-auto so it perfectly scales and centers on desktop */}
       <div className="p-6 -mt-6 relative bg-gray-50 dark:bg-gray-900 rounded-t-2xl w-full max-w-4xl mx-auto transition-colors duration-200">
         
         {/* Title Block Banner */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 w-full">
           <div>
-            {/* Added dark:text-white */}
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{recipe.title}</h1>
-            {/* Added dark:text-gray-400 */}
             <p className="text-gray-600 dark:text-gray-400 text-sm">{recipe.overview || "A delicious recipe curated by Kitchen OS."}</p>
           </div>
 
           {/* Dynamic Like Button Row */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* Added dark:bg-gray-800, dark:border-gray-700, and conditional border matching */}
             <button
               onClick={handleLikeToggle}
               aria-label={isLiked ? "Unlike recipe" : "Like recipe"}
@@ -364,7 +324,6 @@ export default function RecipeDetailPage() {
               />
             </button>
             
-            {/* Added dark:text-gray-400 */}
             <span className="text-sm font-bold text-gray-500 dark:text-gray-400 transition-colors">
               {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
             </span>
@@ -372,7 +331,6 @@ export default function RecipeDetailPage() {
         </div>
 
         {/* Stats Row */}
-        {/* Added dark:text-gray-400, dark:border-gray-800 */}
         <div className="flex gap-6 mb-8 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-800 pb-6 w-full transition-colors">
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4 text-blue-500" />
@@ -396,7 +354,6 @@ export default function RecipeDetailPage() {
           </button>
           
           {/* Dynamic Save Later Button */}
-          {/* Added dark:bg-gray-800, dark:border-gray-700, dark:text-white, dark:hover:bg-gray-700 */}
           <button 
             onClick={toggleSaveRecipe}
             disabled={isSaving}
@@ -413,16 +370,11 @@ export default function RecipeDetailPage() {
 
         {/* Ingredients Section */}
         <div className="mb-8 w-full">
-          {/* Added dark:text-white */}
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Ingredients</h2>
-          {/* Added dark:bg-gray-800, dark:border-gray-700 */}
           <ul className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden w-full transition-colors duration-200">
             {recipe.recipe_ingredients.map((item, idx: number) => (
-              // Added dark:border-gray-700/50
               <li key={idx} className="flex justify-between items-center p-4 border-b border-gray-50 dark:border-gray-700/50 last:border-0">
-                {/* Added dark:text-gray-200 */}
                 <span className="text-gray-900 dark:text-gray-200 font-medium">{item.ingredients.name}</span>
-                {/* Added dark:text-gray-400 */}
                 <span className="text-gray-500 dark:text-gray-400 text-sm">{item.quantity} {item.unit}</span>
               </li>
             ))}
@@ -431,16 +383,13 @@ export default function RecipeDetailPage() {
 
         {/* Steps Preview Section */}
         <div className="mb-8 w-full">
-          {/* Added dark:text-white */}
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Steps Preview</h2>
           <div className="space-y-4 w-full">
             {recipe.recipe_steps.map((step) => (
               <div key={step.step_number} className="flex gap-4 w-full">
-                {/* Added dark:bg-blue-900/30, dark:text-blue-400 */}
                 <div className="shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm transition-colors">
                   {step.step_number}
                 </div>
-                {/* Added dark:text-gray-300 */}
                 <p className="text-gray-700 dark:text-gray-300 pt-1 leading-relaxed grow">{step.instruction}</p>
               </div>
             ))}
@@ -449,48 +398,20 @@ export default function RecipeDetailPage() {
 
       </div>
 
-      <div className="mt-8">
-            <button 
-              onClick={handleCookAction}
-              disabled={isCooking}
-              className="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-2xl hover:bg-blue-700 active:scale-95 transition-all shadow-md disabled:opacity-50"
-            >
-              {isCooking ? "Running Auto-Deduct..." : "I'm Cooking This"}
-            </button>
-
-            {deductionStatus && (
-              <div className={`mt-4 p-4 rounded-xl text-sm font-medium ${
-                deductionStatus.includes("Success") 
-                  ? "bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400" 
-                  : "bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-              }`}>
-                {deductionStatus}
-              </div>
-            )}
-        </div>
-
       {/* Pre-Flight Checklist Modal Overlay */}
       {showPreflight && (
-        // Added dark:bg-gray-950/80
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 dark:bg-gray-950/80 backdrop-blur-sm transition-opacity">
-          {/* Added dark:bg-gray-900, dark:border-gray-800 */}
           <div className="bg-white dark:bg-gray-900 border border-transparent dark:border-gray-800 w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-in fade-in zoom-in duration-200 transition-colors">
-            {/* Added dark:text-white */}
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Pre-Flight Checklist</h3>
-            {/* Added dark:text-gray-400 */}
             <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
               Do you have all the ingredients ready on your counter?
             </p>
             
-            {/* Display the ingredients list again for quick checking */}
-            {/* Added dark:bg-gray-800/50, dark:border-gray-700 */}
             <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 mb-6 max-h-48 overflow-y-auto border border-gray-100 dark:border-gray-700 text-sm transition-colors">
               <ul className="space-y-2">
                 {recipe.recipe_ingredients.map((item, idx) => (
-                  // Added dark:text-gray-300
                   <li key={idx} className="flex justify-between text-gray-700 dark:text-gray-300">
                     <span className="font-medium">{item.ingredients.name}</span>
-                    {/* Added dark:text-gray-500 */}
                     <span className="text-gray-500 dark:text-gray-500">{item.quantity} {item.unit}</span>
                   </li>
                 ))}
@@ -498,7 +419,6 @@ export default function RecipeDetailPage() {
             </div>
 
             <div className="flex gap-3">
-              {/* Added dark:bg-gray-800, dark:text-white, dark:hover:bg-gray-700 */}
               <button 
                 onClick={() => setShowPreflight(false)}
                 className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-3 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -518,11 +438,8 @@ export default function RecipeDetailPage() {
       )}
 
       {/* --- REVIEWS SECTION --- */}
-      {/* Added max-w-4xl, mx-auto, px-6, w-full */}
       <div className="max-w-4xl mx-auto px-6 pb-24 w-full">
-        {/* Added dark:bg-gray-800, dark:border-gray-700 */}
         <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 mt-8 transition-colors duration-200 w-full">
-          {/* Added dark:text-white */}
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-2">
             <Star className="w-6 h-6 text-amber-400 fill-current" />
             Chef Reviews ({reviews.length})
@@ -530,9 +447,7 @@ export default function RecipeDetailPage() {
 
           {/* 1. The Input Form (Only show if logged in) */}
           {currentUserId ? (
-            // Added dark:bg-gray-900/50, dark:border-gray-700
             <form onSubmit={handleSubmitReview} className="mb-10 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 transition-colors w-full">
-              {/* Added dark:text-white */}
               <h3 className="font-bold text-gray-900 dark:text-white mb-4">Leave a Review</h3>
               
               {/* Interactive Star Selector */}
@@ -558,7 +473,6 @@ export default function RecipeDetailPage() {
                 ))}
               </div>
 
-              {/* Added dark:bg-gray-800, dark:border-gray-700, dark:text-white, dark:placeholder-gray-500 */}
               <textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
@@ -575,21 +489,17 @@ export default function RecipeDetailPage() {
               </button>
             </form>
           ) : (
-            // Added dark:bg-gray-900/50, dark:border-gray-700, dark:text-gray-400
             <div className="mb-10 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 text-center transition-colors w-full">
               <p className="text-gray-500 dark:text-gray-400">Please log in to share your thoughts.</p>
             </div>
           )}
 
           {/* 2. The Comments List */}
-          {/* Added dark:divide-gray-700 */}
           <div className="space-y-6 divide-y divide-gray-100 dark:divide-gray-700 w-full">
             {reviews.length === 0 ? (
-              // Added dark:text-gray-400
               <p className="text-gray-500 dark:text-gray-400 text-center italic py-4">No reviews yet. Be the first to rate this recipe!</p>
             ) : (
               reviews.map((review) => (
-                // Added dark:border-gray-700/50 and pt-6 for correct division formatting
                 <div key={review.id} className="border-b border-gray-100 dark:border-gray-700/50 pb-6 last:border-0 last:pb-0 pt-6 first:pt-0 w-full transition-colors">
                   <div className="flex items-center gap-2 mb-2 w-full">
                     <div className="flex gap-0.5">
@@ -600,15 +510,12 @@ export default function RecipeDetailPage() {
                         />
                       ))}
                     </div>
-                    {/* Added dark:text-white */}
                     <span className="text-sm font-medium text-gray-900 dark:text-white ml-2">A Fellow Chef</span>
-                    {/* Added dark:text-gray-500 */}
                     <span className="text-xs text-gray-400 dark:text-gray-500 ml-auto">
                       {new Date(review.created_at).toLocaleDateString()}
                     </span>
                   </div>
                   {review.comment && (
-                    // Added dark:text-gray-300
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-2">{review.comment}</p>
                   )}
                 </div>
@@ -616,60 +523,6 @@ export default function RecipeDetailPage() {
             )}
           </div>
         </div>
-        {/* The Jarvis Cook Action Button */}
-      <div className="mt-8">
-        <button 
-          onClick={handleCookAction}
-          disabled={isCooking}
-          className="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-2xl hover:bg-blue-700 active:scale-95 transition-all shadow-md disabled:opacity-50"
-        >
-          {isCooking ? "Scanning Pantry..." : "I'm Cooking This"}
-        </button>
-      </div>
-
-      {/* 🚀 NEW: The Interceptor Modal */}
-      {showShortageModal && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl animate-in zoom-in-95 duration-200">
-            
-            <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center mb-6 mx-auto">
-              <AlertTriangle className="w-8 h-8" />
-            </div>
-            
-            <h3 className="text-xl font-black text-gray-900 dark:text-white text-center mb-3">
-              Pantry Alert
-            </h3>
-            
-            <p className="text-gray-500 dark:text-gray-400 text-center mb-8 text-sm leading-relaxed">
-              Your pantry appears empty or is missing required items. Please confirm you have the necessary ingredients physically before starting.
-            </p>
-            
-            <div className="flex flex-col gap-3">
-              <button 
-                onClick={startCookingSequence} 
-                className="w-full bg-blue-600 text-white font-bold py-3.5 rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
-              >
-                I Have Everything (Continue)
-              </button>
-              
-              <button 
-                onClick={() => router.push("/pantry")} 
-                className="w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-bold py-3.5 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                Update My Pantry
-              </button>
-              
-              <button 
-                onClick={() => setShowShortageModal(false)} 
-                className="w-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 py-2 text-sm font-medium transition-colors mt-2"
-              >
-                Cancel
-              </button>
-            </div>
-            
-          </div>
-        </div>
-      )}
       </div>
 
     </main>
