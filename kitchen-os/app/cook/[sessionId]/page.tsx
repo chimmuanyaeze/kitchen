@@ -1144,7 +1144,7 @@ export default function ActiveCookingPage() {
             value={commandInput}
             onChange={(e) => setCommandInput(e.target.value)}
             disabled={isProcessingAI}
-            placeholder="Say 'Set a 10m timer for rice to boil' or 'I don't have butter'..."
+            placeholder="Edit your recipe with voice or text"
             className="grow bg-transparent text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none px-2 text-sm"
           />
 

@@ -364,7 +364,7 @@ export default function RecipeDetailPage() {
             }`}
           >
             <BookmarkPlus className={`w-5 h-5 ${isSaved ? "text-blue-600 dark:text-blue-400 fill-current" : "text-gray-500 dark:text-gray-400"}`} />
-            {isSaving ? "Saving..." : isSaved ? "Saved" : "Save Later"}
+            {isSaving ? "Saving..." : isSaved ? "Saved" : "Bookmark"}
           </button>
         </div>
 
