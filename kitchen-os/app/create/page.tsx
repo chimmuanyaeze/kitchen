@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { ArrowLeft, Save, Plus, Trash2, ChefHat, Star } from "lucide-react";
+import { ArrowLeft, Save, Plus, Trash2, ChefHat, Star, Globe } from "lucide-react";
 
 interface StructuredIngredient {
   quantity: string;
@@ -29,6 +29,7 @@ function CreateOrEditRecipeForm() {
   const [isLoadingRecipe, setIsLoadingRecipe] = useState(isEditing);
 
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState<"nigerian" | "african" | "foreign">("nigerian");
   const [overview, setOverview] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [prepTime, setPrepTime] = useState("");
@@ -80,6 +81,12 @@ function CreateOrEditRecipeForm() {
 
           if (recipe) {
             setTitle(recipe.title || "");
+            const rawCat = (recipe.category || "nigerian").toLowerCase();
+            if (rawCat === "foreign" || rawCat === "african" || rawCat === "nigerian") {
+              setCategory(rawCat);
+            } else {
+              setCategory("nigerian");
+            }
             setOverview(recipe.overview || "");
             setImageUrl(recipe.image_url || "");
             setPrepTime(String(recipe.prep_time_mins ?? ""));
@@ -149,27 +156,59 @@ function CreateOrEditRecipeForm() {
 
   const ALLOWED_IMAGE_DOMAINS = [
     "encrypted-tbn0.gstatic.com",
-    "i.imgur.com",
+    "lh3.googleusercontent.com",
     "images.unsplash.com",
+    "plus.unsplash.com",
     "images.pexels.com",
     "cdn.pixabay.com",
+    "img.freepik.com",
+    "media.istockphoto.com",
+    "image.shutterstock.com",
+    "i.imgur.com",
+    "i.pinimg.com",
     "upload.wikimedia.org",
+    "res.cloudinary.com",
+    "supabase.co",
+    "foodnetwork.com",
+    "allrecipes.com",
+    "seriouseats.com",
+    "simplyrecipes.com",
+    "images.immediate.co.uk",
+    "wp.com",
+    "cheflolaskitchen.com",
+    "sisijemimah.com",
+    "allnigerianrecipes.com",
   ];
+
+  const isDomainAllowed = (hostname: string) =>
+    ALLOWED_IMAGE_DOMAINS.some(
+      (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
+    );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (imageUrl.trim() !== "") {
+    let cleanImageUrl = imageUrl.trim();
+
+    if (cleanImageUrl !== "") {
       try {
-        const parsedUrl = new URL(imageUrl);
-        if (!ALLOWED_IMAGE_DOMAINS.includes(parsedUrl.hostname)) {
+        const parsedUrl = new URL(cleanImageUrl);
+        if (!isDomainAllowed(parsedUrl.hostname)) {
           setErrorMessage(
-            `For security, Kitchen OS only allows images from these sites:\n\n${ALLOWED_IMAGE_DOMAINS.join(
-              "\n"
-            )}\n\nPlease host your image on one of these platforms or add the new domain to next.config.ts first.`
+            `For security, Kitchen OS only allows images from approved culinary and image hosts:\n\n${ALLOWED_IMAGE_DOMAINS.join(
+              ", "
+            )}\n\nPlease use an image from one of these platforms or add "${
+              parsedUrl.hostname
+            }" to next.config.ts.`
           );
           setShowErrorModal(true);
           return;
+        }
+
+        // Strip ?utm_source=... tracking query strings from Wikimedia links to prevent 429 blocks
+        if (parsedUrl.hostname.includes("wikimedia.org")) {
+          parsedUrl.search = "";
+          cleanImageUrl = parsedUrl.toString();
         }
       } catch {
         setErrorMessage(
@@ -191,8 +230,9 @@ function CreateOrEditRecipeForm() {
           .from("recipes")
           .update({
             title,
+            category,
             overview,
-            image_url: imageUrl,
+            image_url: cleanImageUrl,
             prep_time_mins: parseInt(prepTime) || 0,
             cook_time_mins: parseInt(cookTime) || 0,
             default_servings: parseInt(servings) || 2,
@@ -216,8 +256,9 @@ function CreateOrEditRecipeForm() {
           .from("recipes")
           .insert({
             title,
+            category,
             overview,
-            image_url: imageUrl,
+            image_url: cleanImageUrl,
             prep_time_mins: parseInt(prepTime) || 0,
             cook_time_mins: parseInt(cookTime) || 0,
             default_servings: parseInt(servings) || 2,
@@ -309,7 +350,9 @@ function CreateOrEditRecipeForm() {
       router.push("/");
     } catch (error) {
       console.error("Failed to save recipe:", error);
-      alert("Error saving recipe. Check the console.");
+      alert(
+        "Error saving recipe. Make sure you ran: ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS category text DEFAULT 'nigerian';"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -387,6 +430,56 @@ function CreateOrEditRecipeForm() {
                   className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
                   placeholder="4"
                 />
+              </div>
+            </div>
+
+            {/* Dish Category Selector */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 flex items-center gap-1.5">
+                <Globe className="w-4 h-4 text-blue-500" />
+                Cuisine Category
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {[
+                  {
+                    id: "nigerian",
+                    label: "🇳🇬 Nigerian",
+                    desc: "Also appears in African",
+                  },
+                  {
+                    id: "african",
+                    label: "🌍 Other African",
+                    desc: "Appears in African Dishes",
+                  },
+                  {
+                    id: "foreign",
+                    label: "🌐 Foreign",
+                    desc: "Intercontinental / Global",
+                  },
+                ].map((opt) => {
+                  const active = category === opt.id;
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() =>
+                        setCategory(opt.id as "nigerian" | "african" | "foreign")
+                      }
+                      className={`p-3 rounded-xl border text-left transition-all ${
+                        active
+                          ? "bg-blue-50 dark:bg-blue-900/30 border-blue-500 dark:border-blue-500 ring-1 ring-blue-500"
+                          : "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
+                    >
+                      <div className="text-sm font-bold text-gray-900 dark:text-white">
+                        {opt.label}
+                      </div>
+                      <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                        {opt.desc}
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

@@ -10,6 +10,7 @@ export interface Recipe {
   image_url?: string;
   overview?: string | null;
   likes_count?: number;
+  category?: "nigerian" | "african" | "foreign" | string | null;
 }
 
 // The shape of an Ingredient when attached to a Recipe
