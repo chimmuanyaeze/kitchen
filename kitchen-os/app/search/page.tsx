@@ -114,9 +114,7 @@ function SearchResultsContent() {
     if (isSpeakingStep) return;
     setIsSpeakingStep(true);
     try {
-      const inferenceUrl =
-        process.env.NEXT_PUBLIC_INFERENCE_URL || "http://localhost:8000";
-      const res = await fetch(`${inferenceUrl}/speak`, {
+        const res = await fetch("/api/ai/speak", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, voiceGender: "female" }),

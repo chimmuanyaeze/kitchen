@@ -142,11 +142,9 @@ export default function SmartSearchBar({
         setIsTranscribing(true);
         try {
           const formData = new FormData();
-          formData.append("file", audioBlob, "voice.webm");
+          formData.append("audio", audioBlob, "voice.webm");
 
-          const inferenceUrl =
-            process.env.NEXT_PUBLIC_INFERENCE_URL || "http://localhost:8000";
-          const res = await fetch(`${inferenceUrl}/transcribe`, {
+          const res = await fetch("/api/ai/transcribe", {
             method: "POST",
             body: formData,
           });

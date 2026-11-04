@@ -43,14 +43,7 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  async rewrites() {
-    return [
-      {
-        source: "/api/engine/:path*",
-        destination: "http://187.126.7.169:8000/:path*", // Securely routes traffic to your Hostinger VPS
-      },
-    ];
-  },
+ 
 };
 
 export default nextConfig;
