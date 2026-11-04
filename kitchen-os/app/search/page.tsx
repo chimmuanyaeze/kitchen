@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, useSyncExternalStore, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import {
@@ -23,6 +23,20 @@ import Link from "next/link";
 import Image from "next/image";
 import SmartSearchBar, { AIGeneratedRecipe } from "@/components/SmartSearchBar";
 
+// Safe subscription helpers for sessionStorage that satisfy both SSR Hydration & React Compiler
+const subscribeToStorage = (callback: () => void) => {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+};
+
+const getClientSnapshot = (): string | null => {
+  return sessionStorage.getItem("kitchen_os_ai_recipe");
+};
+
+const getServerSnapshot = (): string | null => {
+  return null; // Guarantees Server HTML and Initial Client Hydration match 100%
+};
+
 function SearchResultsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -32,20 +46,25 @@ function SearchResultsContent() {
   const [results, setResults] = useState<RecipeWithIngredients[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Lazy state initialization reads sessionStorage cleanly without triggering useEffect cascading render errors
-  const [aiRecipe, setAiRecipe] = useState<AIGeneratedRecipe | null>(() => {
-    if (typeof window !== "undefined") {
-      const stored = sessionStorage.getItem("kitchen_os_ai_recipe");
-      if (stored) {
-        try {
-          return JSON.parse(stored) as AIGeneratedRecipe;
-        } catch {
-          return null;
-        }
-      }
+  // Read sessionStorage safely after hydration without useEffect setState
+  const rawStoredRecipe = useSyncExternalStore(
+    subscribeToStorage,
+    getClientSnapshot,
+    getServerSnapshot
+  );
+
+  // Allow instant override when clicking "Cook with AI" while already on /search
+  const [manualAiRecipe, setManualAiRecipe] = useState<AIGeneratedRecipe | null>(null);
+
+  const aiRecipe: AIGeneratedRecipe | null = (() => {
+    if (manualAiRecipe) return manualAiRecipe;
+    if (!rawStoredRecipe) return null;
+    try {
+      return JSON.parse(rawStoredRecipe) as AIGeneratedRecipe;
+    } catch {
+      return null;
     }
-    return null;
-  });
+  })();
 
   const [currentStepPage, setCurrentStepPage] = useState(0);
   const [isSpeakingStep, setIsSpeakingStep] = useState(false);
@@ -114,7 +133,9 @@ function SearchResultsContent() {
     if (isSpeakingStep) return;
     setIsSpeakingStep(true);
     try {
-        const res = await fetch("/api/ai/speak", {
+      const inferenceUrl =
+        process.env.NEXT_PUBLIC_INFERENCE_URL || "http://localhost:8000";
+      const res = await fetch(`${inferenceUrl}/speak`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, voiceGender: "female" }),
@@ -147,7 +168,9 @@ function SearchResultsContent() {
         </button>
         <div>
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            {mode === "ai" ? "AI-Assisted Cooking Guidance" : "Database Search Results"}
+            {mode === "ai"
+              ? "AI-Assisted Cooking Guidance"
+              : "Database Search Results"}
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {mode === "ai"
@@ -162,7 +185,7 @@ function SearchResultsContent() {
         <SmartSearchBar
           initialQuery={query}
           onAIResult={(recipe: AIGeneratedRecipe) => {
-            setAiRecipe(recipe);
+            setManualAiRecipe(recipe);
             setCurrentStepPage(0);
             router.push("/search?mode=ai");
           }}
