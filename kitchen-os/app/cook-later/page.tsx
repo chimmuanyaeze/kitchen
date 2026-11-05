@@ -58,27 +58,27 @@ export default function CookLaterPage() {
   };
 
   return (
-    // Added dark:bg-gray-900 and w-full
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
+    // Added dark:bg-[#121110] and w-full
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#121110] pb-24 w-full transition-colors duration-200">
       
       {/* Top Header */}
-      {/* Added dark:bg-gray-800 and dark:border-gray-700 */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-4 flex items-center gap-4 sticky top-0 z-10 border-b border-gray-100 dark:border-gray-700 transition-colors duration-200 w-full">
+      {/* Added dark:bg-[#1C1A18] and dark:border-[#2E2B28] */}
+      <div className="bg-white dark:bg-[#1C1A18] px-6 py-4 flex items-center gap-4 sticky top-0 z-10 border-b border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200 w-full">
         <button 
           onClick={() => router.push("/")}
-          // Added dark:bg-gray-700 and dark:hover:bg-gray-600
-          className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+          // Added dark:bg-[#262320] and dark:hover:bg-[#302D29]
+          className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] transition-colors"
           aria-label="Go back"
           title="Go back"
         >
-          {/* Added dark:text-gray-300 */}
-          <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          {/* Added dark:text-[#D6D1C7] */}
+          <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#D6D1C7]" />
         </button>
         <div>
-          {/* Added dark:text-white */}
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">Cook Later</h1>
-          {/* Added dark:text-gray-400 */}
-          <p className="text-sm text-gray-500 dark:text-gray-400">Your personal recipe vault</p>
+          {/* Added dark:text-[#F5F2EB] */}
+          <h1 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">Cook Later</h1>
+          {/* Added dark:text-[#A8A29E] */}
+          <p className="text-sm text-[#78716C] dark:text-[#A8A29E]">Your personal recipe vault</p>
         </div>
       </div>
 
@@ -88,20 +88,18 @@ export default function CookLaterPage() {
               <SkeletonLoader />
             ) : savedItems.length === 0 ? (
           <div className="text-center mt-24 mx-auto w-full max-w-sm">
-            {/* Added dark:bg-blue-900/20 and dark:text-blue-500/40 */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-200 shadow-inner">
-              {/* Added dark:text-blue-500 */}
-              <Bookmark className="w-10 h-10 text-blue-400 dark:text-blue-500" />
+            <div className="bg-[#F9EBE8] dark:bg-[#3A201A] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 text-[#C84B31] dark:text-[#F29C85] shadow-inner">
+              <Bookmark className="w-10 h-10 text-[#C84B31] dark:text-[#E07A5F]" />
             </div>
-            {/* Added dark:text-white */}
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Your vault is empty</h2>
-            {/* Added dark:text-gray-400 */}
-            <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 px-4 leading-relaxed">
+            {/* Added dark:text-[#F5F2EB] */}
+            <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">Your vault is empty</h2>
+            {/* Added dark:text-[#A8A29E] */}
+            <p className="text-[#78716C] dark:text-[#A8A29E] text-sm mb-8 px-4 leading-relaxed">
               When you find a recipe you want to try, tap the bookmark icon to save it here for later.
             </p>
             <button 
               onClick={() => router.push("/explore")}
-              className="bg-blue-600 text-white px-8 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors shadow-md"
+              className="bg-[#C84B31] text-white px-8 py-3 rounded-xl font-medium hover:bg-[#B03E26] transition-colors shadow-md"
             >
               Explore Recipes
             </button>
@@ -113,12 +111,12 @@ export default function CookLaterPage() {
               <Link 
                 href={`/recipes/${item.recipes.id}`}
                 key={item.id} 
-                // Added dark:bg-gray-800 and dark:border-gray-700
-                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all overflow-hidden flex items-center h-28 group w-full"
+                // Added dark:bg-[#1C1A18] and dark:border-[#2E2B28]
+                className="bg-white dark:bg-[#1C1A18] rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm hover:shadow-md transition-all overflow-hidden flex items-center h-28 group w-full"
               >
                 {/* Recipe Image */}
-                {/* Added dark:bg-slate-800 */}
-                <div className="w-28 h-full bg-slate-100 dark:bg-slate-800 relative shrink-0">
+                {/* Added dark:bg-[#1C1A18] */}
+                <div className="w-28 h-full bg-[#F3EFEA] dark:bg-[#1C1A18] relative shrink-0">
                   {item.recipes.image_url ? (
                     <Image 
                       src={item.recipes.image_url} 
@@ -128,8 +126,8 @@ export default function CookLaterPage() {
                       className="object-cover"
                     />
                   ) : (
-                    // Added dark:text-slate-600
-                    <div className="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-600">
+                    // Added dark:text-[#78716C]
+                    <div className="w-full h-full flex items-center justify-center text-[#A8A29E] dark:text-[#78716C]">
                       <ChefHat className="w-8 h-8" />
                     </div>
                   )}
@@ -138,20 +136,20 @@ export default function CookLaterPage() {
                 {/* Recipe Info */}
                 <div className="p-4 grow flex flex-col min-w-0 justify-between h-full">
                   <div className="min-w-0 pr-4">
-                    {/* Added dark:text-white */}
-                    <h3 className="text-md font-bold text-gray-900 dark:text-white truncate mb-1">{item.recipes.title}</h3>
-                    {/* Added dark:text-gray-400 */}
-                    <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
-                      <Clock className="w-3 h-3 text-blue-500" />
+                    {/* Added dark:text-[#F5F2EB] */}
+                    <h3 className="text-md font-bold text-[#1C1917] dark:text-[#F5F2EB] truncate mb-1">{item.recipes.title}</h3>
+                    {/* Added dark:text-[#A8A29E] */}
+                    <div className="flex items-center gap-1 text-sm text-[#78716C] dark:text-[#A8A29E]">
+                      <Clock className="w-3 h-3 text-[#C84B31]" />
                       <span>{item.recipes.prep_time_mins + item.recipes.cook_time_mins} mins</span>
                     </div>
                   </div>
                   
                   {/* Quick Delete Button */}
-                  {/* Added dark:text-gray-500, dark:hover:text-red-400, and dark:hover:bg-red-950/30 */}
+                  {/* Added dark:text-[#A8A29E], dark:hover:text-red-400, and dark:hover:bg-red-950/30 */}
                   <button 
                     onClick={(e) => handleRemoveBookmark(e, item.id)}
-                    className="p-2 text-gray-300 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-colors opacity-100 md:opacity-0 group-hover:opacity-100 shrink-0 self-end"
+                    className="p-2 text-[#D6D1C7] dark:text-[#A8A29E] hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-colors opacity-100 md:opacity-0 group-hover:opacity-100 shrink-0 self-end"
                     title="Remove from Cook Later"
                   >
                     <Trash2 className="w-5 h-5" />

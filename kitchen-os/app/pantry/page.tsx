@@ -91,38 +91,38 @@ export default function PantryPage() {
   if (loading) return <SkeletonLoader />;
   
   if (!user) {
-    return <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-500 dark:text-gray-400 transition-colors duration-200">Please log in to view your pantry.</div>;
+    return <div className="flex min-h-screen items-center justify-center bg-[#FAF8F5] dark:bg-[#121110] text-[#78716C] dark:text-[#A8A29E] transition-colors duration-200">Please log in to view your pantry.</div>;
   }
 
   return (
-    // Added dark:bg-gray-900, w-full, and transitions
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pb-24 w-full transition-colors duration-200">
+    // Added dark:bg-[#121110], w-full, and transitions
+    <main className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] p-6 pb-24 w-full transition-colors duration-200">
       <div className="max-w-4xl mx-auto w-full">
-        {/* Added dark:text-white */}
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Smart Pantry</h1>
-        {/* Added dark:text-gray-400 */}
-        <p className="text-gray-600 dark:text-gray-400 mb-8">Manage your kitchen inventory so Kitchen OS can cook for you.</p>
+        {/* Added dark:text-[#F5F2EB] */}
+        <h1 className="text-3xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">Smart Pantry</h1>
+        {/* Added dark:text-[#A8A29E] */}
+        <p className="text-[#44403C] dark:text-[#A8A29E] mb-8">Manage your kitchen inventory so Kitchen OS can cook for you.</p>
 
         {/* 1. Add Ingredient Form */}
-        {/* Added dark:bg-gray-800, dark:border-gray-700 */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 mb-8 transition-colors duration-200">
-          {/* Added dark:text-white */}
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <Plus className="w-5 h-5 text-blue-500" />
+        {/* Added dark:bg-[#1C1A18], dark:border-[#2E2B28] */}
+        <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] mb-8 transition-colors duration-200">
+          {/* Added dark:text-[#F5F2EB] */}
+          <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4 flex items-center gap-2">
+            <Plus className="w-5 h-5 text-[#C84B31]" />
             Restock Fridge
           </h2>
           <form onSubmit={handleAddItem} className="flex flex-col md:flex-row gap-4 w-full">
-            {/* Added dark:bg-gray-900, dark:border-gray-700, dark:text-white, dark:focus:bg-gray-800 */}
+            {/* Added dark:bg-[#121110], dark:border-[#2E2B28], dark:text-[#F5F2EB], dark:focus:bg-[#1C1A18] */}
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., Chicken Breast"
-              className="flex-grow p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-white bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+              className="flex-grow p-3 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl text-[#44403C] dark:text-[#F5F2EB] bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all"
               required
             />
             <div className="flex gap-2 w-full md:w-auto">
-              {/* Added dark:bg-gray-900, dark:border-gray-700, dark:text-white, dark:focus:bg-gray-800 */}
+              {/* Added dark:bg-[#121110], dark:border-[#2E2B28], dark:text-[#F5F2EB], dark:focus:bg-[#1C1A18] */}
               <input
                 type="number"
                 step="0.1"
@@ -130,16 +130,16 @@ export default function PantryPage() {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 placeholder="Qty"
-                className="w-24 p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-white bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="w-24 p-3 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl text-[#44403C] dark:text-[#F5F2EB] bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all"
                 required
               />
-              {/* Added dark:bg-gray-900, dark:border-gray-700, dark:text-white, dark:focus:bg-gray-800 */}
+              {/* Added dark:bg-[#121110], dark:border-[#2E2B28], dark:text-[#F5F2EB], dark:focus:bg-[#1C1A18] */}
               <select
                 value={unit}
                 onChange={(e) => setUnit(e.target.value)}
                 title="Unit"
                 aria-label="Unit"
-                className="w-28 p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-white bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer"
+                className="w-28 p-3 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl text-[#44403C] dark:text-[#F5F2EB] bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all cursor-pointer"
               >
                 <option value="grams">grams</option>
                 <option value="kg">kg</option>
@@ -153,7 +153,7 @@ export default function PantryPage() {
             <button
               type="submit"
               disabled={isAdding}
-              className="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors whitespace-nowrap"
+              className="bg-[#C84B31] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#B03E26] disabled:opacity-50 transition-colors whitespace-nowrap"
             >
               {isAdding ? "Adding..." : "Add to Pantry"}
             </button>
@@ -161,34 +161,34 @@ export default function PantryPage() {
         </div>
 
         {/* 2. The Inventory List */}
-        {/* Added dark:bg-gray-800, dark:border-gray-700 */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200 w-full">
+        {/* Added dark:bg-[#1C1A18], dark:border-[#2E2B28] */}
+        <div className="bg-white dark:bg-[#1C1A18] rounded-3xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] overflow-hidden transition-colors duration-200 w-full">
           {items.length === 0 ? (
             <div className="p-12 flex flex-col items-center justify-center text-center">
-              <PackageOpen className="w-16 h-16 text-gray-200 dark:text-gray-700 mb-4" />
-              {/* Added dark:text-white */}
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Your pantry is empty</h3>
-              {/* Added dark:text-gray-400 */}
-              <p className="text-gray-500 dark:text-gray-400 max-w-sm">Start adding ingredients above to let Kitchen OS know what you have available to cook.</p>
+              <PackageOpen className="w-16 h-16 text-[#D6D1C7] dark:text-[#44403C] mb-4" />
+              {/* Added dark:text-[#F5F2EB] */}
+              <h3 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">Your pantry is empty</h3>
+              {/* Added dark:text-[#A8A29E] */}
+              <p className="text-[#78716C] dark:text-[#A8A29E] max-w-sm">Start adding ingredients above to let Kitchen OS know what you have available to cook.</p>
             </div>
           ) : (
-            // Added dark:divide-gray-700
-            <ul className="divide-y divide-gray-100 dark:divide-gray-700 w-full">
+            // Added dark:divide-[#2E2B28]
+            <ul className="divide-y divide-[#E6E1DA] dark:divide-[#2E2B28] w-full">
               {items.map((item) => (
-                // Added dark:hover:bg-gray-700/50
-                <li key={item.id} className="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                // Added dark:hover:bg-[#262320]/50
+                <li key={item.id} className="p-4 flex items-center justify-between hover:bg-[#FAF8F5] dark:hover:bg-[#262320]/50 transition-colors">
                   <div>
-                    {/* Added dark:text-white */}
-                    <h3 className="font-bold text-gray-900 dark:text-white capitalize">{item.name}</h3>
-                    {/* Added dark:text-gray-400 */}
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {/* Added dark:text-[#F5F2EB] */}
+                    <h3 className="font-bold text-[#1C1917] dark:text-[#F5F2EB] capitalize">{item.name}</h3>
+                    {/* Added dark:text-[#A8A29E] */}
+                    <p className="text-sm text-[#78716C] dark:text-[#A8A29E]">
                       {item.quantity} {item.unit}
                     </p>
                   </div>
-                  {/* Added dark:text-gray-500, dark:hover:text-red-400, dark:hover:bg-red-950/30 */}
+                  {/* Added dark:text-[#A8A29E], dark:hover:text-red-400, dark:hover:bg-red-950/30 */}
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-all"
+                    className="p-2 text-[#78716C] dark:text-[#A8A29E] hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-all"
                     title="Remove from pantry"
                     aria-label="Remove from pantry"
                   >

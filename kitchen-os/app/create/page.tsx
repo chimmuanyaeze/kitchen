@@ -360,34 +360,34 @@ function CreateOrEditRecipeForm() {
 
   if (isLoadingRecipe) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-medium">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5] dark:bg-[#121110] text-[#44403C] dark:text-[#D6D1C7] font-medium">
         Loading recipe from the Kitchen Vault...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] pb-24 w-full transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200 w-full">
+      <div className="bg-white dark:bg-[#1C1A18] px-6 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm transition-colors duration-200 w-full">
         <div className="flex items-center gap-4">
           <button
             type="button"
             aria-label="Go back"
             title="Go back"
             onClick={() => router.push("/")}
-            className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] transition-colors"
           >
-            <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#D6D1C7]" />
           </button>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">
             {isEditing ? "Edit Recipe" : "Add New Recipe"}
           </h1>
         </div>
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium flex items-center gap-2 hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-sm"
+          className="bg-[#C84B31] text-white px-5 py-2.5 rounded-xl font-medium flex items-center gap-2 hover:bg-[#B03E26] disabled:opacity-50 transition-colors shadow-sm"
         >
           <Save className="w-4 h-4" />
           {isSubmitting
@@ -400,26 +400,26 @@ function CreateOrEditRecipeForm() {
 
       <div className="p-6 max-w-3xl mx-auto mt-4 space-y-8 w-full">
         {/* Section 1: Basic Info */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
-            <ChefHat className="w-5 h-5 text-blue-600" /> Basic Information
+        <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+          <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-5 flex items-center gap-2">
+            <ChefHat className="w-5 h-5 text-[#C84B31]" /> Basic Information
           </h2>
           <div className="space-y-5">
             <div className="flex flex-col md:flex-row gap-4 w-full">
               <div className="flex-3">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                   Recipe Title
                 </label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                   placeholder="e.g., Authentic Nigerian Jollof"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                   Default Servings
                 </label>
                 <input
@@ -427,7 +427,7 @@ function CreateOrEditRecipeForm() {
                   min="0"
                   value={servings}
                   onChange={(e) => setServings(e.target.value)}
-                  className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                   placeholder="4"
                 />
               </div>
@@ -435,8 +435,8 @@ function CreateOrEditRecipeForm() {
 
             {/* Dish Category Selector */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 flex items-center gap-1.5">
-                <Globe className="w-4 h-4 text-blue-500" />
+              <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5 flex items-center gap-1.5">
+                <Globe className="w-4 h-4 text-[#C84B31]" />
                 Cuisine Category
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -467,14 +467,14 @@ function CreateOrEditRecipeForm() {
                       }
                       className={`p-3 rounded-xl border text-left transition-all ${
                         active
-                          ? "bg-blue-50 dark:bg-blue-900/30 border-blue-500 dark:border-blue-500 ring-1 ring-blue-500"
-                          : "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          ? "bg-[#F9EBE8] dark:bg-[#3A201A] border-[#C84B31] dark:border-[#C84B31] ring-1 ring-[#C84B31]"
+                          : "bg-[#FAF8F5] dark:bg-[#121110] border-[#E6E1DA] dark:border-[#2E2B28] hover:bg-[#F3EFEA] dark:hover:bg-[#1C1A18]"
                       }`}
                     >
-                      <div className="text-sm font-bold text-gray-900 dark:text-white">
+                      <div className="text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB]">
                         {opt.label}
                       </div>
-                      <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                      <div className="text-[11px] text-[#78716C] dark:text-[#A8A29E] mt-0.5">
                         {opt.desc}
                       </div>
                     </button>
@@ -484,31 +484,31 @@ function CreateOrEditRecipeForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                 Short Overview
               </label>
               <textarea
                 value={overview}
                 onChange={(e) => setOverview(e.target.value)}
-                className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none h-24 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all resize-none h-24 text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                 placeholder="A rich, smoky party Jollof that brings the heat..."
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                 Image URL
               </label>
               <input
                 type="text"
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
-                className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                 placeholder="https://images.unsplash.com/..."
               />
             </div>
             <div className="flex gap-4">
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                   Prep Time (mins)
                 </label>
                 <input
@@ -516,12 +516,12 @@ function CreateOrEditRecipeForm() {
                   min="0"
                   value={prepTime}
                   onChange={(e) => setPrepTime(e.target.value)}
-                  className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                   placeholder="15"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1.5">
                   Cook Time (mins)
                 </label>
                 <input
@@ -529,7 +529,7 @@ function CreateOrEditRecipeForm() {
                   min="0"
                   value={cookTime}
                   onChange={(e) => setCookTime(e.target.value)}
-                  className="w-full p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                   placeholder="45"
                 />
               </div>
@@ -538,12 +538,12 @@ function CreateOrEditRecipeForm() {
         </div>
 
         {/* Section 2: Structured Ingredients */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">
+        <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+          <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-5">
             Ingredients (Database Ready)
           </h2>
           <div className="space-y-4">
-            <div className="flex gap-2 px-1 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <div className="flex gap-2 px-1 text-xs font-bold text-[#78716C] dark:text-[#A8A29E] uppercase tracking-wider">
               <div className="w-20">Qty</div>
               <div className="w-28">Unit</div>
               <div className="flex-1">Pure Ingredient Name</div>
@@ -554,7 +554,7 @@ function CreateOrEditRecipeForm() {
             {ingredients.map((ing, index) => (
               <div
                 key={index}
-                className="flex gap-2 items-center bg-gray-50 dark:bg-gray-900 p-2 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors"
+                className="flex gap-2 items-center bg-[#FAF8F5] dark:bg-[#121110] p-2 rounded-xl border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors"
               >
                 <input
                   type="number"
@@ -564,7 +564,7 @@ function CreateOrEditRecipeForm() {
                   onChange={(e) =>
                     updateIngredient(index, "quantity", e.target.value)
                   }
-                  className="w-20 p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900 dark:text-white transition-colors"
+                  className="w-20 p-3 bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-lg focus:ring-2 focus:ring-[#C84B31] outline-none text-[#1C1917] dark:text-[#F5F2EB] transition-colors"
                   placeholder="2"
                 />
                 <input
@@ -573,7 +573,7 @@ function CreateOrEditRecipeForm() {
                   onChange={(e) =>
                     updateIngredient(index, "unit", e.target.value)
                   }
-                  className="w-28 p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900 dark:text-white transition-colors"
+                  className="w-28 p-3 bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-lg focus:ring-2 focus:ring-[#C84B31] outline-none text-[#1C1917] dark:text-[#F5F2EB] transition-colors"
                   placeholder="cups"
                 />
                 <input
@@ -582,7 +582,7 @@ function CreateOrEditRecipeForm() {
                   onChange={(e) =>
                     updateIngredient(index, "name", e.target.value)
                   }
-                  className="flex-1 p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900 dark:text-white transition-colors"
+                  className="flex-1 p-3 bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-lg focus:ring-2 focus:ring-[#C84B31] outline-none text-[#1C1917] dark:text-[#F5F2EB] transition-colors"
                   placeholder="long grain rice"
                 />
 
@@ -594,7 +594,7 @@ function CreateOrEditRecipeForm() {
                   className={`w-12 h-10 flex items-center justify-center rounded-lg border transition-colors ${
                     ing.is_core
                       ? "bg-amber-50 dark:bg-amber-900/30 border-amber-200 dark:border-amber-700 text-amber-500 dark:text-amber-400"
-                      : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-300 dark:text-gray-600"
+                      : "bg-white dark:bg-[#1C1A18] border-[#E6E1DA] dark:border-[#2E2B28] text-[#D6D1C7] dark:text-[#44403C]"
                   }`}
                   title={
                     ing.is_core
@@ -612,7 +612,7 @@ function CreateOrEditRecipeForm() {
                   onClick={() =>
                     setIngredients(ingredients.filter((_, i) => i !== index))
                   }
-                  className="p-3 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition-colors"
+                  className="p-3 text-[#78716C] dark:text-[#A8A29E] hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition-colors"
                   title="Remove ingredient"
                   aria-label="Remove ingredient"
                 >
@@ -630,7 +630,7 @@ function CreateOrEditRecipeForm() {
                   { quantity: "", unit: "", name: "", is_core: true },
                 ])
               }
-              className="text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors flex items-center gap-1.5"
+              className="text-sm bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] px-4 py-2 rounded-lg font-medium hover:bg-[#F9EBE8] dark:hover:bg-[#3A201A] transition-colors flex items-center gap-1.5"
             >
               <Plus className="w-4 h-4" /> Add Item
             </button>
@@ -638,26 +638,26 @@ function CreateOrEditRecipeForm() {
         </div>
 
         {/* Section 3: Instructions */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">
+        <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+          <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-5">
             Cooking Steps
           </h2>
           <div className="space-y-4">
             {steps.map((step, index) => (
               <div key={index} className="flex gap-3 items-start">
-                <div className="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold flex items-center justify-center shrink-0 mt-1 transition-colors">
+                <div className="w-9 h-9 rounded-full bg-[#F9EBE8] dark:bg-[#3A201A] text-[#9E331E] dark:text-[#E07A5F] font-bold flex items-center justify-center shrink-0 mt-1 transition-colors">
                   {index + 1}
                 </div>
                 <textarea
                   value={step}
                   onChange={(e) => handleStepChange(index, e.target.value)}
-                  className="flex-1 p-3.5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none h-28 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="flex-1 p-3.5 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all resize-none h-28 text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                   placeholder={`Describe step ${index + 1}...`}
                 />
                 <button
                   type="button"
                   onClick={() => setSteps(steps.filter((_, i) => i !== index))}
-                  className="p-3.5 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-colors mt-1"
+                  className="p-3.5 text-[#78716C] dark:text-[#A8A29E] hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-colors mt-1"
                   title={`Remove step ${index + 1}`}
                   aria-label={`Remove step ${index + 1}`}
                 >
@@ -670,7 +670,7 @@ function CreateOrEditRecipeForm() {
             <button
               type="button"
               onClick={() => setSteps([...steps, ""])}
-              className="text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors flex items-center gap-1.5"
+              className="text-sm bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] px-4 py-2 rounded-lg font-medium hover:bg-[#F9EBE8] dark:hover:bg-[#3A201A] transition-colors flex items-center gap-1.5"
             >
               <Plus className="w-4 h-4" /> Add Step
             </button>
@@ -681,12 +681,12 @@ function CreateOrEditRecipeForm() {
       {/* --- ERROR MODAL --- */}
       {showErrorModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6 border border-gray-100 dark:border-gray-700 animate-in fade-in zoom-in-95 duration-200">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+          <div className="bg-white dark:bg-[#1C1A18] rounded-2xl shadow-xl max-w-md w-full p-6 border border-[#E6E1DA] dark:border-[#2E2B28] animate-in fade-in zoom-in-95 duration-200">
+            <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-3 flex items-center gap-2">
               <span className="text-red-500">⚠️</span> Invalid Image Source
             </h3>
 
-            <div className="text-gray-600 dark:text-gray-300 text-sm whitespace-pre-line mb-6 leading-relaxed">
+            <div className="text-[#44403C] dark:text-[#D6D1C7] text-sm whitespace-pre-line mb-6 leading-relaxed">
               {errorMessage}
             </div>
 
@@ -694,7 +694,7 @@ function CreateOrEditRecipeForm() {
               <button
                 type="button"
                 onClick={() => setShowErrorModal(false)}
-                className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-5 py-2.5 rounded-xl font-medium transition-colors"
+                className="bg-[#F3EFEA] dark:bg-[#262320] hover:bg-[#E6E1DA] dark:hover:bg-[#302D29] text-[#1C1917] dark:text-[#F5F2EB] px-5 py-2.5 rounded-xl font-medium transition-colors"
               >
                 Understood
               </button>
@@ -710,7 +710,7 @@ export default function CreateRecipePage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
+        <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5] dark:bg-[#121110] text-[#44403C] dark:text-[#D6D1C7]">
           Loading Kitchen Vault...
         </div>
       }

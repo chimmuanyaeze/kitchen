@@ -193,14 +193,14 @@ export default function Home() {
   ].filter((section) => section.items.length > 0);
 
   return (
-    <main className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pb-24 overflow-x-hidden w-full transition-colors duration-200">
+    <main className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#121110] p-6 pb-24 overflow-x-hidden w-full transition-colors duration-200">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-6 w-full">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">
             Hello, Chef{chefNickname ? ` ${chefNickname}` : ""} 👋
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] mt-0.5">
             What are we cooking today?
           </p>
         </div>
@@ -225,26 +225,26 @@ export default function Home() {
       {/* Continue Cooking */}
       {activeSessions.length > 0 && (
         <div className="mb-8 w-full">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4">
             Continue Cooking
           </h2>
           <div className="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar">
             {activeSessions.map((activeSession) => (
               <div
                 key={activeSession.id}
-                className="relative w-[260px] sm:w-[280px] md:w-[320px] lg:w-[340px] shrink-0 bg-gray-900 dark:bg-gray-800 border border-transparent dark:border-gray-700 text-white p-4 sm:p-5 rounded-2xl shadow-md snap-start flex flex-col justify-between transition-all duration-200"
+                className="relative w-[260px] sm:w-[280px] md:w-[320px] lg:w-[340px] shrink-0 bg-[#1C1A18] dark:bg-[#1C1A18] border border-transparent dark:border-[#2E2B28] text-white p-4 sm:p-5 rounded-2xl shadow-md snap-start flex flex-col justify-between transition-all duration-200"
               >
                 <button
                   type="button"
                   onClick={() => handleRemoveSession(activeSession.id)}
-                  className="absolute top-3 sm:top-4 right-3 sm:right-4 p-1.5 bg-gray-800 dark:bg-gray-700 rounded-full hover:bg-red-500 dark:hover:bg-red-600 transition-colors text-gray-400 hover:text-white"
+                  className="absolute top-3 sm:top-4 right-3 sm:right-4 p-1.5 bg-[#1C1A18] dark:bg-[#262320] rounded-full hover:bg-red-500 dark:hover:bg-red-600 transition-colors text-[#78716C] hover:text-white"
                   title="Remove Session"
                 >
                   <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
 
                 <div className="mb-4 sm:mb-6 pr-8">
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-400 mb-1 block">
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#E07A5F] mb-1 block">
                     Step {activeSession.current_step}
                   </span>
                   <h3 className="text-base sm:text-lg font-bold leading-tight line-clamp-2">
@@ -254,7 +254,7 @@ export default function Home() {
 
                 <Link
                   href={`/cook/${activeSession.id}`}
-                  className="w-full bg-blue-600 text-white py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium flex items-center justify-center gap-2 hover:bg-blue-500 transition-colors"
+                  className="w-full bg-[#C84B31] text-white py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium flex items-center justify-center gap-2 hover:bg-[#B03E26] transition-colors"
                 >
                   <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   Resume
@@ -275,19 +275,19 @@ export default function Home() {
               className="group flex flex-col"
             >
               <div className="flex items-center gap-1.5">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] group-hover:text-[#C84B31] dark:group-hover:text-[#E07A5F] transition-colors">
                   {section.title}
                 </h2>
-                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
+                <ChevronRight className="w-5 h-5 text-[#78716C] group-hover:text-[#C84B31] dark:group-hover:text-[#E07A5F] group-hover:translate-x-0.5 transition-all" />
               </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-xs text-[#78716C] dark:text-[#A8A29E]">
                 {section.subtitle}
               </span>
             </Link>
 
             <Link
               href={`/category/${section.slug}`}
-              className="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 shrink-0"
+              className="text-xs sm:text-sm font-bold text-[#C84B31] dark:text-[#E07A5F] hover:underline flex items-center gap-1 shrink-0"
             >
               View All ({section.items.length})
             </Link>

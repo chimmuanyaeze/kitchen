@@ -739,7 +739,7 @@ export default function ActiveCookingPage() {
 
   if (loading || !recipe || !session) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-white transition-colors duration-200">
+      <div className="flex min-h-screen items-center justify-center bg-[#FAF8F5] dark:bg-[#121110] text-[#44403C] dark:text-[#F5F2EB] transition-colors duration-200">
         Loading Kitchen...
       </div>
     );
@@ -762,24 +762,24 @@ export default function ActiveCookingPage() {
   );
 
   return (
-    <main className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
+    <main className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#121110] text-[#1C1917] dark:text-[#F5F2EB] transition-colors duration-200">
       {/* Top Header */}
-      <div className="flex flex-wrap justify-between items-center gap-3 px-6 py-4 border-b border-gray-200 dark:border-gray-800 transition-colors duration-200">
+      <div className="flex flex-wrap justify-between items-center gap-3 px-6 py-4 border-b border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
         <div className="flex items-center gap-3">
           <button
             type="button"
             title="Go back"
             aria-label="Go back"
             onClick={() => router.push("/")}
-            className="p-2 bg-gray-200 dark:bg-gray-800 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 bg-[#E6E1DA] dark:bg-[#1C1A18] rounded-full hover:bg-[#D6D1C7] dark:hover:bg-[#262320] transition-colors"
           >
             <ArrowLeft className="w-5 h-5"/>
           </button>
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#C84B31] dark:text-[#E07A5F]">
               {recipe.title}
             </p>
-            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            <span className="text-sm font-medium text-[#78716C] dark:text-[#A8A29E]">
               Step {session.current_step} of {totalSteps} ({progressPercentage}%)
             </span>
           </div>
@@ -794,8 +794,8 @@ export default function ActiveCookingPage() {
               timers.some((t) => t.isFinished)
                 ? "bg-red-600 text-white border-red-600 animate-bounce"
                 : timers.length > 0
-                ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                ? "bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] border-[#E6B7AA] dark:border-[#5C3329]"
+                : "bg-[#F3EFEA] dark:bg-[#1C1A18] text-[#44403C] dark:text-[#D6D1C7] border-[#E6E1DA] dark:border-[#2E2B28] hover:bg-[#E6E1DA] dark:hover:bg-[#262320]"
             }`}
             title="Add or manage kitchen timers"
           >
@@ -805,15 +805,15 @@ export default function ActiveCookingPage() {
           </button>
 
           {/* Male / Female Voice Selector */}
-          <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl border border-gray-200 dark:border-gray-700">
-            <Volume2 className="w-4 h-4 ml-1 text-gray-500 hidden sm:inline"/>
+          <div className="flex items-center gap-1 bg-[#F3EFEA] dark:bg-[#1C1A18] p-1 rounded-xl border border-[#E6E1DA] dark:border-[#2E2B28]">
+            <Volume2 className="w-4 h-4 ml-1 text-[#78716C] hidden sm:inline"/>
             <button
               type="button"
               onClick={() => handleVoiceGenderChange("female")}
               className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                 voiceGender === "female"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                  ? "bg-[#C84B31] text-white shadow-sm"
+                  : "text-[#44403C] dark:text-[#A8A29E] hover:text-[#1C1917] dark:hover:text-white"
               }`}
             >
               👩 Female
@@ -823,8 +823,8 @@ export default function ActiveCookingPage() {
               onClick={() => handleVoiceGenderChange("male")}
               className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
                 voiceGender === "male"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                  ? "bg-[#C84B31] text-white shadow-sm"
+                  : "text-[#44403C] dark:text-[#A8A29E] hover:text-[#1C1917] dark:hover:text-white"
               }`}
             >
               👨 Male
@@ -834,12 +834,12 @@ export default function ActiveCookingPage() {
       </div>
 
       {/* --- STEP PROGRESS BAR SECTION --- */}
-      <div className="w-full bg-white dark:bg-gray-900 px-6 py-3 border-b border-gray-100 dark:border-gray-800/80">
+      <div className="w-full bg-white dark:bg-[#121110] px-6 py-3 border-b border-[#E6E1DA] dark:border-[#2E2B28]/80">
         <div className="max-w-3xl mx-auto">
           {/* Continuous Animated Progress Bar */}
-          <div className="w-full h-2.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+          <div className="w-full h-2.5 bg-[#E6E1DA] dark:bg-[#1C1A18] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-[#C84B31] to-[#B03E26] rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -857,10 +857,10 @@ export default function ActiveCookingPage() {
                   title={`Go to Step ${s.step_number}`}
                   className={`h-6 min-w-[1.5rem] px-1.5 rounded-full text-[11px] font-bold transition-all shrink-0 ${
                     isCurrent
-                      ? "bg-blue-600 text-white scale-110 shadow-sm"
+                      ? "bg-[#C84B31] text-white scale-110 shadow-sm"
                       : isCompleted
-                      ? "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
-                      : "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      ? "bg-[#F9EBE8] dark:bg-[#3A201A] text-[#9E331E] dark:text-[#F29C85]"
+                      : "bg-[#F3EFEA] dark:bg-[#1C1A18] text-[#78716C] dark:text-[#A8A29E] hover:bg-[#E6E1DA] dark:hover:bg-[#262320]"
                   }`}
                 >
                   {s.step_number}
@@ -873,7 +873,7 @@ export default function ActiveCookingPage() {
 
       {/* Hands-Free Voice Status Banner */}
       {(isListening || isTranscribing || isSpeaking) && (
-        <div className="bg-blue-600 text-white px-4 py-2 flex items-center justify-center gap-2 text-xs font-bold animate-pulse shadow-inner text-center">
+        <div className="bg-[#C84B31] text-white px-4 py-2 flex items-center justify-center gap-2 text-xs font-bold animate-pulse shadow-inner text-center">
           <Mic className="w-4 h-4 shrink-0"/>
           {isTranscribing ? (
             <span>Listening to what you said...</span>
@@ -892,17 +892,17 @@ export default function ActiveCookingPage() {
 
       {/* --- MANUAL TIMER CREATOR DRAWER --- */}
       {showTimerDrawer && (
-        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 shadow-md animate-in slide-in-from-top duration-200">
+        <div className="bg-white dark:bg-[#1C1A18] border-b border-[#E6E1DA] dark:border-[#2E2B28] px-6 py-4 shadow-md animate-in slide-in-from-top duration-200">
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <Timer className="w-4 h-4 text-blue-500"/>
+              <h3 className="text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
+                <Timer className="w-4 h-4 text-[#C84B31]"/>
                 Add a Kitchen Timer (or say &quot;Set a 10 minutes timer for my rice to boil&quot;)
               </h3>
               <button
                 type="button"
                 onClick={() => setShowTimerDrawer(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                className="p-1 text-[#78716C] hover:text-[#44403C] dark:hover:text-[#D6D1C7]"
               >
                 <X className="w-4 h-4"/>
               </button>
@@ -917,37 +917,37 @@ export default function ActiveCookingPage() {
                 value={newTimerLabel}
                 onChange={(e) => setNewTimerLabel(e.target.value)}
                 placeholder="Timer name (e.g., Rice boiling, Plantain frying)"
-                className="flex-1 px-3.5 py-2 text-sm rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3.5 py-2 text-sm rounded-xl border border-[#E6E1DA] dark:border-[#2E2B28] bg-[#FAF8F5] dark:bg-[#121110] text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none focus:ring-2 focus:ring-[#C84B31]"
               />
 
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-2.5 py-1.5">
+                <div className="flex items-center gap-1 bg-[#FAF8F5] dark:bg-[#121110] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl px-2.5 py-1.5">
                   <input
                     type="number"
                     min="0"
                     max="999"
                     value={newTimerMins}
                     onChange={(e) => setNewTimerMins(e.target.value)}
-                    className="w-12 bg-transparent text-center font-mono text-sm font-bold text-gray-900 dark:text-white focus:outline-none"
+                    className="w-12 bg-transparent text-center font-mono text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none"
                   />
-                  <span className="text-xs text-gray-400">min</span>
+                  <span className="text-xs text-[#78716C]">min</span>
                 </div>
 
-                <div className="flex items-center gap-1 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-2.5 py-1.5">
+                <div className="flex items-center gap-1 bg-[#FAF8F5] dark:bg-[#121110] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl px-2.5 py-1.5">
                   <input
                     type="number"
                     min="0"
                     max="59"
                     value={newTimerSecs}
                     onChange={(e) => setNewTimerSecs(e.target.value)}
-                    className="w-12 bg-transparent text-center font-mono text-sm font-bold text-gray-900 dark:text-white focus:outline-none"
+                    className="w-12 bg-transparent text-center font-mono text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none"
                   />
-                  <span className="text-xs text-gray-400">sec</span>
+                  <span className="text-xs text-[#78716C]">sec</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors shrink-0"
+                  className="bg-[#C84B31] hover:bg-[#B03E26] text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors shrink-0"
                 >
                   Start Timer
                 </button>
@@ -956,7 +956,7 @@ export default function ActiveCookingPage() {
 
             {/* Quick Preset Pills */}
             <div className="flex flex-wrap items-center gap-2 mt-3">
-              <span className="text-xs text-gray-400">Quick start:</span>
+              <span className="text-xs text-[#78716C]">Quick start:</span>
               {[
                 { label: "Simmer Check", mins: 3 },
                 { label: "Boil Eggs", mins: 8 },
@@ -970,7 +970,7 @@ export default function ActiveCookingPage() {
                     createTimer(preset.label, preset.mins * 60, true);
                     setShowTimerDrawer(false);
                   }}
-                  className="text-xs px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-700/70 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                  className="text-xs px-2.5 py-1 rounded-lg bg-[#F3EFEA] dark:bg-[#262320]/70 hover:bg-[#F9EBE8] dark:hover:bg-[#3A201A] text-[#44403C] dark:text-[#D6D1C7] hover:text-[#C84B31] dark:hover:text-[#E07A5F] font-medium transition-colors"
                 >
                   + {preset.label} ({preset.mins}m)
                 </button>
@@ -1000,7 +1000,7 @@ export default function ActiveCookingPage() {
                   className={`relative overflow-hidden rounded-2xl p-3.5 border shadow-sm transition-all ${
                     timer.isFinished
                       ? "bg-red-50 dark:bg-red-950/60 border-red-400 dark:border-red-700 animate-pulse"
-                      : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                      : "bg-white dark:bg-[#1C1A18] border-[#E6E1DA] dark:border-[#2E2B28]"
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -1008,9 +1008,9 @@ export default function ActiveCookingPage() {
                       {timer.isFinished ? (
                         <BellRing className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 animate-bounce"/>
                       ) : (
-                        <Timer className="w-4 h-4 text-blue-500 shrink-0"/>
+                        <Timer className="w-4 h-4 text-[#C84B31] shrink-0"/>
                       )}
-                      <span className="text-xs font-bold text-gray-800 dark:text-gray-100 truncate">
+                      <span className="text-xs font-bold text-[#1C1917] dark:text-[#F5F2EB] truncate">
                         {timer.label}
                       </span>
                     </div>
@@ -1018,7 +1018,7 @@ export default function ActiveCookingPage() {
                     <button
                       type="button"
                       onClick={() => removeTimer(timer.id)}
-                      className="p-1 text-gray-400 hover:text-red-500 rounded-full transition-colors"
+                      className="p-1 text-[#78716C] hover:text-red-500 rounded-full transition-colors"
                       title="Dismiss timer"
                     >
                       <X className="w-3.5 h-3.5"/>
@@ -1030,7 +1030,7 @@ export default function ActiveCookingPage() {
                       className={`font-mono text-2xl font-extrabold tracking-tight ${
                         timer.isFinished
                           ? "text-red-600 dark:text-red-400"
-                          : "text-gray-900 dark:text-white"
+                          : "text-[#1C1917] dark:text-[#F5F2EB]"
                       }`}
                     >
                       {timer.isFinished
@@ -1046,7 +1046,7 @@ export default function ActiveCookingPage() {
                           className={`p-2 rounded-xl text-white transition-colors ${
                             timer.isRunning
                               ? "bg-amber-500 hover:bg-amber-600"
-                              : "bg-blue-600 hover:bg-blue-700"
+                              : "bg-[#C84B31] hover:bg-[#B03E26]"
                           }`}
                           title={timer.isRunning ? "Pause" : "Resume"}
                         >
@@ -1061,7 +1061,7 @@ export default function ActiveCookingPage() {
                       <button
                         type="button"
                         onClick={() => resetTimer(timer.id)}
-                        className="p-2 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-colors"
+                        className="p-2 rounded-xl bg-[#F3EFEA] dark:bg-[#262320] hover:bg-[#E6E1DA] dark:hover:bg-[#302D29] text-[#44403C] dark:text-[#D6D1C7] transition-colors"
                         title="Reset timer"
                       >
                         <RotateCcw className="w-3.5 h-3.5"/>
@@ -1070,10 +1070,10 @@ export default function ActiveCookingPage() {
                   </div>
 
                   {/* Individual Timer Progress Bar */}
-                  <div className="w-full h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden mt-2.5">
+                  <div className="w-full h-1.5 bg-[#F3EFEA] dark:bg-[#262320] rounded-full overflow-hidden mt-2.5">
                     <div
                       className={`h-full transition-all duration-500 ${
-                        timer.isFinished ? "bg-red-500" : "bg-blue-500"
+                        timer.isFinished ? "bg-red-500" : "bg-[#C84B31]"
                       }`}
                       style={{ width: `${pct}%` }}
                     />
@@ -1096,7 +1096,7 @@ export default function ActiveCookingPage() {
             <button
               type="button"
               onClick={() => setShowOriginal(!showOriginal)}
-              className="mt-6 flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-gray-700"
+              className="mt-6 flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors bg-[#F9EBE8] dark:bg-[#1C1A18] text-[#C84B31] dark:text-[#E07A5F] hover:bg-[#F9EBE8] dark:hover:bg-[#262320]"
             >
               {showOriginal
                 ? " 🤖 Switch to AI Adapted Version"
@@ -1108,7 +1108,7 @@ export default function ActiveCookingPage() {
         {/* The AI Command Center */}
         <form
           onSubmit={handleAICommand}
-          className="mt-4 w-full max-w-md flex items-center bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-200 dark:border-gray-700 shadow-xl transition-colors duration-200"
+          className="mt-4 w-full max-w-md flex items-center bg-white dark:bg-[#1C1A18] rounded-full p-1 border border-[#E6E1DA] dark:border-[#2E2B28] shadow-xl transition-colors duration-200"
         >
           {/* Hands-free Toggle Button */}
           <button
@@ -1118,7 +1118,7 @@ export default function ActiveCookingPage() {
             className={`p-3 rounded-full transition-all disabled:opacity-60 ${
               isListening
                 ? "bg-red-500 text-white animate-bounce shadow-md"
-                : "text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                : "text-[#C84B31] dark:text-[#E07A5F] hover:bg-[#F3EFEA] dark:hover:bg-[#262320]"
             }`}
             title={
               isTranscribing
@@ -1145,13 +1145,13 @@ export default function ActiveCookingPage() {
             onChange={(e) => setCommandInput(e.target.value)}
             disabled={isProcessingAI}
             placeholder="Edit your recipe with voice or text"
-            className="grow bg-transparent text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none px-2 text-sm"
+            className="grow bg-transparent text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C] focus:outline-none px-2 text-sm"
           />
 
           <button
             type="submit"
             disabled={isProcessingAI || !commandInput.trim()}
-            className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-500 disabled:opacity-50 disabled:bg-gray-400 dark:disabled:bg-gray-700 transition-colors"
+            className="p-3 bg-[#C84B31] text-white rounded-full hover:bg-[#B03E26] disabled:opacity-50 disabled:bg-[#A8A29E] dark:disabled:bg-[#262320] transition-colors"
           >
             {isProcessingAI ? (
               <span className="animate-pulse text-xs font-bold px-1">...</span>
@@ -1163,12 +1163,12 @@ export default function ActiveCookingPage() {
       </div>
 
       {/* Bottom Controls */}
-      <div className="flex gap-4 p-6 bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-transparent pb-safe transition-colors duration-200">
+      <div className="flex gap-4 p-6 bg-white dark:bg-[#121110] border-t border-[#E6E1DA] dark:border-transparent pb-safe transition-colors duration-200">
         <button
           type="button"
           onClick={handlePrevStep}
           disabled={session.current_step === 1}
-          className="w-1/3 bg-gray-100 dark:bg-gray-800 py-4 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-white disabled:opacity-50 transition-colors"
+          className="w-1/3 bg-[#F3EFEA] dark:bg-[#1C1A18] py-4 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-[#E6E1DA] dark:hover:bg-[#262320] text-[#44403C] dark:text-[#F5F2EB] disabled:opacity-50 transition-colors"
         >
           <ChevronLeft className="w-5 h-5"/>
           Previous
@@ -1176,7 +1176,7 @@ export default function ActiveCookingPage() {
         <button
           type="button"
           onClick={handleNextStep}
-          className="w-2/3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+          className="w-2/3 bg-[#1C1A18] dark:bg-white text-white dark:text-[#1C1917] py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#1C1A18] dark:hover:bg-[#F3EFEA] transition-colors"
         >
           {session.current_step === recipe.recipe_steps.length
             ? "Finish Meal"
@@ -1189,19 +1189,19 @@ export default function ActiveCookingPage() {
 
       {/* Completion Celebration Modal */}
       {showCompletionModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 dark:bg-gray-950/80 backdrop-blur-md transition-opacity">
-          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 w-full max-w-sm rounded-3xl p-8 shadow-2xl text-center animate-in fade-in zoom-in duration-300">
-            <div className="w-24 h-24 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner shadow-blue-500/20">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1C1A18]/60 dark:bg-[#121110]/80 backdrop-blur-md transition-opacity">
+          <div className="bg-white dark:bg-[#121110] border border-[#E6E1DA] dark:border-[#2E2B28] w-full max-w-sm rounded-3xl p-8 shadow-2xl text-center animate-in fade-in zoom-in duration-300">
+            <div className="w-24 h-24 bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#F29C85] rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner shadow-black/10">
               <ChefHat className="w-12 h-12"/>
             </div>
 
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+            <h3 className="text-3xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-3">
               Bon Appétit!
             </h3>
 
-            <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 leading-relaxed">
+            <p className="text-[#78716C] dark:text-[#A8A29E] text-sm mb-8 leading-relaxed">
               You&apos;ve successfully conquered{" "}
-              <span className="text-gray-900 dark:text-white font-medium">
+              <span className="text-[#1C1917] dark:text-[#F5F2EB] font-medium">
                 {recipe.title}
               </span>
               . Time to plate up and enjoy your masterpiece.
@@ -1210,7 +1210,7 @@ export default function ActiveCookingPage() {
             <button
               type="button"
               onClick={() => router.push("/")}
-              className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-500 active:scale-95 transition-all shadow-lg shadow-blue-900/20 dark:shadow-blue-900/50"
+              className="w-full bg-[#C84B31] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#B03E26] active:scale-95 transition-all shadow-lg shadow-[#6B2A1D]/20 dark:shadow-black/30"
             >
               Return to Dashboard
             </button>

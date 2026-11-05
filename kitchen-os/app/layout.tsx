@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import OfflineIndicator from "@/components/OfflineIndicator";
 import LayoutWrapper from "@/components/LayoutWrapper";
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -27,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -46,7 +51,7 @@ export default function RootLayout({
         />
       </head>
       
-      <body className="h-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <body className="h-full bg-[#FAF8F5] dark:bg-[#121110] text-[#1C1917] dark:text-[#F5F2EB] transition-colors duration-200">
         
         {/* Drops down globally if the user loses Wi-Fi */}
         <OfflineIndicator />

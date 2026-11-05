@@ -155,24 +155,24 @@ function SearchResultsContent() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 w-full transition-colors duration-200 pb-24">
+    <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#121110] w-full transition-colors duration-200 pb-24">
       {/* Top Header */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-4 flex items-center gap-4 sticky top-0 z-20 border-b border-gray-100 dark:border-gray-700 w-full transition-colors">
+      <div className="bg-white dark:bg-[#1C1A18] px-6 py-4 flex items-center gap-4 sticky top-0 z-20 border-b border-[#E6E1DA] dark:border-[#2E2B28] w-full transition-colors">
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+          className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] transition-colors"
           aria-label="Go back"
         >
-          <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#D6D1C7]" />
         </button>
         <div>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">
             {mode === "ai"
               ? "AI-Assisted Cooking Guidance"
               : "Database Search Results"}
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-[#78716C] dark:text-[#A8A29E]">
             {mode === "ai"
               ? "Custom culinary guidance generated from your input"
               : `Showing database matches for "${query}"`}
@@ -197,32 +197,32 @@ function SearchResultsContent() {
         {mode === "ai" && aiRecipe ? (
           <div className="space-y-6 animate-in fade-in duration-300">
             {/* a) Dish Name, Description & d) Metadata Badges */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full mb-3">
+            <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C84B31] dark:text-[#E07A5F] bg-[#F9EBE8] dark:bg-[#3A201A] px-3 py-1 rounded-full mb-3">
                 <Sparkles className="w-3.5 h-3.5" />
                 AI-Assisted Cooking Guidance
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">
                 {aiRecipe.dish_name}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-5">
+              <p className="text-[#44403C] dark:text-[#D6D1C7] text-sm sm:text-base leading-relaxed mb-5">
                 {aiRecipe.short_description}
               </p>
 
               {/* Cooking time, servings, difficulty */}
-              <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
-                  <Clock className="w-4 h-4 text-blue-500" />
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-[#E6E1DA] dark:border-[#2E2B28]">
+                <div className="flex items-center gap-2 bg-[#FAF8F5] dark:bg-[#121110] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-[#44403C] dark:text-[#D6D1C7]">
+                  <Clock className="w-4 h-4 text-[#C84B31]" />
                   <span>
                     {aiRecipe.prep_time_mins + aiRecipe.cook_time_mins} mins total (
                     {aiRecipe.prep_time_mins}m prep / {aiRecipe.cook_time_mins}m cook)
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
-                  <Users className="w-4 h-4 text-emerald-500" />
+                <div className="flex items-center gap-2 bg-[#FAF8F5] dark:bg-[#121110] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-[#44403C] dark:text-[#D6D1C7]">
+                  <Users className="w-4 h-4 text-[#2D6A4F]" />
                   <span>{aiRecipe.servings} Servings</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-2 bg-[#FAF8F5] dark:bg-[#121110] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-[#44403C] dark:text-[#D6D1C7]">
                   <Flame className="w-4 h-4 text-amber-500" />
                   <span>Difficulty: {aiRecipe.difficulty}</span>
                 </div>
@@ -230,8 +230,8 @@ function SearchResultsContent() {
             </div>
 
             {/* b) Ingredients List + Missing Items Highlight */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+            <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+              <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4">
                 Ingredients & Availability Check
               </h3>
 
@@ -245,7 +245,7 @@ function SearchResultsContent() {
                 </div>
               )}
 
-              <ul className="divide-y divide-gray-100 dark:divide-gray-700/60">
+              <ul className="divide-y divide-[#E6E1DA] dark:divide-[#2E2B28]/60">
                 {aiRecipe.ingredients.map((ing, idx: number) => (
                   <li
                     key={idx}
@@ -255,9 +255,9 @@ function SearchResultsContent() {
                       {ing.is_missing ? (
                         <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
                       ) : (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#2D6A4F] shrink-0" />
                       )}
-                      <span className="font-medium text-gray-900 dark:text-white">
+                      <span className="font-medium text-[#1C1917] dark:text-[#F5F2EB]">
                         {ing.name}
                       </span>
                       {ing.is_missing && (
@@ -266,7 +266,7 @@ function SearchResultsContent() {
                         </span>
                       )}
                     </div>
-                    <span className="text-gray-500 dark:text-gray-400 font-medium">
+                    <span className="text-[#78716C] dark:text-[#A8A29E] font-medium">
                       {ing.quantity} {ing.unit}
                     </span>
                   </li>
@@ -276,9 +276,9 @@ function SearchResultsContent() {
 
             {/* c) Paginated Step-by-Step Instructions */}
             {aiRecipe.steps.length > 0 && (
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
+              <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#C84B31] dark:text-[#E07A5F]">
                     Step {currentStepPage + 1} of {aiRecipe.steps.length}
                   </span>
                   <button
@@ -289,7 +289,7 @@ function SearchResultsContent() {
                       )
                     }
                     disabled={isSpeakingStep}
-                    className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] hover:bg-[#F9EBE8] transition-colors"
                   >
                     <Volume2 className="w-4 h-4" />
                     {isSpeakingStep ? "Speaking..." : "Read Step Aloud"}
@@ -297,9 +297,9 @@ function SearchResultsContent() {
                 </div>
 
                 {/* Progress Bar */}
-                <div className="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden mb-6">
+                <div className="w-full h-2 bg-[#F3EFEA] dark:bg-[#262320] rounded-full overflow-hidden mb-6">
                   <div
-                    className="h-full bg-blue-600 transition-all duration-300"
+                    className="h-full bg-[#C84B31] transition-all duration-300"
                     style={{
                       width: `${
                         ((currentStepPage + 1) / aiRecipe.steps.length) * 100
@@ -310,14 +310,14 @@ function SearchResultsContent() {
 
                 {/* Active Step Card */}
                 <div className="min-h-[140px] flex flex-col justify-center mb-6">
-                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h4 className="text-lg sm:text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">
                     {aiRecipe.steps[currentStepPage].title}
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-200 text-base sm:text-lg leading-relaxed">
+                  <p className="text-[#44403C] dark:text-[#D6D1C7] text-base sm:text-lg leading-relaxed">
                     {aiRecipe.steps[currentStepPage].instruction}
                   </p>
                   {aiRecipe.steps[currentStepPage].tip && (
-                    <p className="mt-3 text-xs sm:text-sm text-blue-600 dark:text-blue-400 bg-blue-50/70 dark:bg-blue-950/30 p-3 rounded-xl">
+                    <p className="mt-3 text-xs sm:text-sm text-[#C84B31] dark:text-[#E07A5F] bg-[#F9EBE8]/70 dark:bg-[#3A201A]/40 p-3 rounded-xl">
                       💡 <strong>Chef Tip:</strong>{" "}
                       {aiRecipe.steps[currentStepPage].tip}
                     </p>
@@ -325,14 +325,14 @@ function SearchResultsContent() {
                 </div>
 
                 {/* Step Pagination Controls */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                <div className="flex items-center justify-between pt-4 border-t border-[#E6E1DA] dark:border-[#2E2B28]">
                   <button
                     type="button"
                     onClick={() =>
                       setCurrentStepPage((p: number) => Math.max(0, p - 1))
                     }
                     disabled={currentStepPage === 0}
-                    className="px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-1.5 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 disabled:opacity-40 hover:bg-gray-200 transition-colors"
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-1.5 bg-[#F3EFEA] dark:bg-[#262320] text-[#44403C] dark:text-[#D6D1C7] disabled:opacity-40 hover:bg-[#E6E1DA] transition-colors"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     Previous Step
@@ -346,8 +346,8 @@ function SearchResultsContent() {
                         onClick={() => setCurrentStepPage(idx)}
                         className={`w-2.5 h-2.5 rounded-full transition-all ${
                           idx === currentStepPage
-                            ? "bg-blue-600 w-6"
-                            : "bg-gray-300 dark:bg-gray-600"
+                            ? "bg-[#C84B31] w-6"
+                            : "bg-[#D6D1C7] dark:bg-[#302D29]"
                         }`}
                         aria-label={`Go to step ${idx + 1}`}
                       />
@@ -362,7 +362,7 @@ function SearchResultsContent() {
                       )
                     }
                     disabled={currentStepPage === aiRecipe.steps.length - 1}
-                    className="px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-1.5 bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-1.5 bg-[#C84B31] text-white disabled:opacity-40 hover:bg-[#B03E26] transition-colors"
                   >
                     Next Step
                     <ChevronRight className="w-4 h-4" />
@@ -374,15 +374,15 @@ function SearchResultsContent() {
             {/* e) Tips & Possible Substitutions */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Culinary Tips */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+                <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4 flex items-center gap-2">
                   <Lightbulb className="w-5 h-5 text-amber-500" />
                   Chef Tips
                 </h3>
-                <ul className="space-y-2.5 text-sm text-gray-600 dark:text-gray-300">
+                <ul className="space-y-2.5 text-sm text-[#44403C] dark:text-[#D6D1C7]">
                   {aiRecipe.tips.map((tip: string, idx: number) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-blue-500 font-bold">•</span>
+                      <span className="text-[#C84B31] font-bold">•</span>
                       <span>{tip}</span>
                     </li>
                   ))}
@@ -390,24 +390,24 @@ function SearchResultsContent() {
               </div>
 
               {/* Substitutions */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Repeat className="w-5 h-5 text-emerald-500" />
+              <div className="bg-white dark:bg-[#1C1A18] p-6 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+                <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4 flex items-center gap-2">
+                  <Repeat className="w-5 h-5 text-[#2D6A4F]" />
                   Possible Substitutions
                 </h3>
                 <div className="space-y-3 text-sm">
                   {aiRecipe.substitutions.map((sub, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700/60"
+                      className="p-3 rounded-2xl bg-[#FAF8F5] dark:bg-[#121110] border border-[#E6E1DA] dark:border-[#2E2B28]/60"
                     >
-                      <p className="font-bold text-gray-900 dark:text-white">
+                      <p className="font-bold text-[#1C1917] dark:text-[#F5F2EB]">
                         {sub.original} →{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">
+                        <span className="text-[#2D6A4F] dark:text-[#6FCF97]">
                           {sub.substitute}
                         </span>
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p className="text-xs text-[#78716C] dark:text-[#A8A29E] mt-0.5">
                         {sub.note}
                       </p>
                     </div>
@@ -422,18 +422,18 @@ function SearchResultsContent() {
              ========================================================= */
           <div className="w-full">
             {loading ? (
-              <div className="text-center text-gray-500 dark:text-gray-400 mt-10 animate-pulse mx-auto">
+              <div className="text-center text-[#78716C] dark:text-[#A8A29E] mt-10 animate-pulse mx-auto">
                 Searching the Kitchen OS database...
               </div>
             ) : results.length === 0 ? (
-              <div className="text-center mt-16 mx-auto w-full max-w-sm bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                <div className="bg-gray-100 dark:bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400 dark:text-gray-500">
+              <div className="text-center mt-16 mx-auto w-full max-w-sm bg-white dark:bg-[#1C1A18] p-8 rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+                <div className="bg-[#F3EFEA] dark:bg-[#262320] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-[#78716C] dark:text-[#A8A29E]">
                   <ChefHat className="w-8 h-8" />
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">
                   No results found in the database.
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
+                <p className="text-[#78716C] dark:text-[#A8A29E] text-sm">
                   We couldn&apos;t find a matching recipe in our curated vault. Try
                   clicking <strong>Cook with AI</strong> above to generate a custom
                   guide from your ingredients or photo!
@@ -445,9 +445,9 @@ function SearchResultsContent() {
                   <Link
                     href={`/recipes/${recipe.id}`}
                     key={recipe.id}
-                    className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex items-center h-28 w-full"
+                    className="bg-white dark:bg-[#1C1A18] rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm hover:shadow-md transition-shadow overflow-hidden flex items-center h-28 w-full"
                   >
-                    <div className="w-28 h-full bg-slate-100 dark:bg-slate-800 relative shrink-0">
+                    <div className="w-28 h-full bg-[#F3EFEA] dark:bg-[#1C1A18] relative shrink-0">
                       {recipe.image_url ? (
                         <Image
                           src={recipe.image_url}
@@ -458,17 +458,17 @@ function SearchResultsContent() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-600">
+                        <div className="w-full h-full flex items-center justify-center text-[#A8A29E] dark:text-[#78716C]">
                           <ChefHat className="w-8 h-8" />
                         </div>
                       )}
                     </div>
                     <div className="p-4 grow flex flex-col justify-center min-w-0 h-full">
-                      <h3 className="text-base font-bold text-gray-900 dark:text-white truncate mb-1">
+                      <h3 className="text-base font-bold text-[#1C1917] dark:text-[#F5F2EB] truncate mb-1">
                         {recipe.title}
                       </h3>
-                      <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
-                        <Clock className="w-3.5 h-3.5 text-blue-500" />
+                      <div className="flex items-center gap-1 text-sm text-[#78716C] dark:text-[#A8A29E]">
+                        <Clock className="w-3.5 h-3.5 text-[#C84B31]" />
                         <span>
                           {recipe.prep_time_mins + recipe.cook_time_mins} mins
                         </span>
@@ -489,7 +489,7 @@ export default function SearchPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center text-gray-500 dark:text-gray-400">
+        <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] flex items-center justify-center text-[#78716C] dark:text-[#A8A29E]">
           Loading...
         </div>
       }

@@ -202,23 +202,23 @@ export default function CategoryListPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pb-24 w-full transition-colors duration-200">
+    <main className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] p-6 pb-24 w-full transition-colors duration-200">
       <div className="max-w-4xl mx-auto w-full">
         {/* Top Header */}
         <div className="flex items-center gap-4 mb-6">
           <button
             type="button"
             onClick={() => router.push("/")}
-            className="p-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            className="p-2.5 bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#262320] transition-colors shadow-sm"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5 text-gray-800 dark:text-white" />
+            <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#F5F2EB]" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">
               {meta.title}
             </h1>
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E]">
               {meta.description} ({filteredRecipes.length}{" "}
               {filteredRecipes.length === 1 ? "meal" : "meals"})
             </p>
@@ -227,12 +227,12 @@ export default function CategoryListPage() {
 
         {/* List View of Meals */}
         {paginatedRecipes.length === 0 ? (
-          <div className="bg-white dark:bg-gray-800 rounded-3xl p-10 text-center border border-gray-100 dark:border-gray-700 shadow-sm">
-            <ChefHat className="w-12 h-12 mx-auto text-gray-400 mb-3" />
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+          <div className="bg-white dark:bg-[#1C1A18] rounded-3xl p-10 text-center border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+            <ChefHat className="w-12 h-12 mx-auto text-[#78716C] mb-3" />
+            <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-1">
               No meals in this category yet
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-[#78716C] dark:text-[#A8A29E]">
               Check back soon or explore another category.
             </p>
           </div>
@@ -246,19 +246,19 @@ export default function CategoryListPage() {
                 <Link
                   key={recipe.id}
                   href={`/recipes/${recipe.id}`}
-                  className={`group flex items-center gap-4 bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all w-full ${
+                  className={`group flex items-center gap-4 bg-white dark:bg-[#1C1A18] p-3 sm:p-4 rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm hover:shadow-md transition-all w-full ${
                     deletingId === recipe.id
                       ? "opacity-50 pointer-events-none"
                       : ""
                   }`}
                 >
                   {/* Rank Number */}
-                  <div className="w-7 text-center font-black text-sm text-gray-400 dark:text-gray-500 shrink-0">
+                  <div className="w-7 text-center font-black text-sm text-[#78716C] dark:text-[#A8A29E] shrink-0">
                     #{rankNumber}
                   </div>
 
                   {/* Fixed Thumbnail */}
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700 relative shrink-0">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-[#F3EFEA] dark:bg-[#262320] relative shrink-0">
                     {recipe.image_url ? (
                       <Image
                         src={recipe.image_url}
@@ -268,7 +268,7 @@ export default function CategoryListPage() {
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-500">
+                      <div className="w-full h-full flex items-center justify-center text-[#A8A29E] dark:text-[#A8A29E]">
                         <ChefHat className="w-7 h-7" />
                       </div>
                     )}
@@ -276,17 +276,17 @@ export default function CategoryListPage() {
 
                   {/* Meal Info */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                    <h3 className="text-base sm:text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] group-hover:text-[#C84B31] dark:group-hover:text-[#E07A5F] transition-colors truncate">
                       {recipe.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+                    <p className="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] line-clamp-1 mt-0.5">
                       {recipe.overview ||
                         "A delicious Kitchen OS recipe ready to cook."}
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400 font-medium">
+                    <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-[#78716C] dark:text-[#A8A29E] font-medium">
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-blue-500" />
+                        <Clock className="w-3.5 h-3.5 text-[#C84B31]" />
                         {recipe.prep_time_mins + recipe.cook_time_mins} mins
                       </span>
                       <span className="flex items-center gap-1 text-red-500">
@@ -309,7 +309,7 @@ export default function CategoryListPage() {
                         type="button"
                         onClick={(e) => handleEdit(e, recipe.id)}
                         title="Edit Recipe"
-                        className="p-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white rounded-xl transition-colors"
+                        className="p-2 bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] hover:bg-[#B03E26] hover:text-white rounded-xl transition-colors"
                       >
                         <Edit3 className="w-4 h-4" />
                       </button>
@@ -339,7 +339,7 @@ export default function CategoryListPage() {
                   setCurrentPage((p) => Math.max(1, p - 1));
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="px-3 py-2 rounded-xl text-sm font-bold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320] transition-colors"
               >
                 &lt;&lt;
               </button>
@@ -355,8 +355,8 @@ export default function CategoryListPage() {
                 }}
                 className={`w-10 h-10 rounded-xl text-sm font-bold transition-all ${
                   page === currentPage
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    ? "bg-[#C84B31] text-white shadow-sm"
+                    : "bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320]"
                 }`}
               >
                 {page}
@@ -370,7 +370,7 @@ export default function CategoryListPage() {
                   setCurrentPage((p) => Math.min(totalPages, p + 1));
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="px-3 py-2 rounded-xl text-sm font-bold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320] transition-colors"
               >
                 &gt;&gt;
               </button>

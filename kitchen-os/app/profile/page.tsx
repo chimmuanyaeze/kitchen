@@ -59,26 +59,26 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] pb-24 w-full transition-colors duration-200">
       
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200 w-full">
+      <div className="bg-white dark:bg-[#1C1A18] px-6 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm transition-colors duration-200 w-full">
         <div className="flex items-center gap-4">
           <button
             onClick={() => router.push("/")}
-            className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] transition-colors"
             title="Go back"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#D6D1C7]" />
           </button>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">Your Profile</h1>
+          <h1 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">Your Profile</h1>
         </div>
 
         {/* ⚙️ Core Configuration Redirect Link */}
         <button
           onClick={() => router.push("/settings")}
-          className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition-all"
+          className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] text-[#44403C] dark:text-[#D6D1C7] transition-all"
           title="Open Settings"
         >
           <Settings className="w-5 h-5" />
@@ -88,14 +88,14 @@ export default function ProfilePage() {
       <div className="p-6 max-w-2xl mx-auto mt-4 space-y-6 w-full flex flex-col">
         
         {/* Identity Context Summary Card */}
-        <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
+        <div className="w-full bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
           <div className="flex items-center gap-4">
-            <div className="p-4 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full">
+            <div className="p-4 bg-[#F9EBE8] dark:bg-[#3A201A] text-[#C84B31] dark:text-[#E07A5F] rounded-full">
               <User className="w-8 h-8" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Account Active</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400 break-all sm:truncate" title={userEmail || ""}>
+              <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">Account Active</h2>
+              <p className="text-sm text-[#78716C] dark:text-[#A8A29E] break-all sm:truncate" title={userEmail || ""}>
                 {userEmail}
               </p>
             </div>
@@ -103,17 +103,17 @@ export default function ProfilePage() {
         </div>
 
         {/* --- MEDICAL & DIETARY VAULT CARD --- */}
-        <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
+        <div className="w-full bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
           
           <div className="flex items-center justify-between mb-6 gap-2">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
               Medical & Dietary Vault
             </h3>
             
             {!isEditing && !isLoading && (
               <button 
                 onClick={() => setIsEditing(true)}
-                className="flex items-center gap-2 text-sm font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors whitespace-nowrap"
+                className="flex items-center gap-2 text-sm font-medium text-[#C84B31] bg-[#F9EBE8] dark:bg-[#3A201A] px-4 py-2 rounded-lg hover:bg-[#F9EBE8] dark:hover:bg-[#3A201A] transition-colors whitespace-nowrap"
               >
                 <Edit2 className="w-4 h-4" /> Edit
               </button>
@@ -121,30 +121,30 @@ export default function ProfilePage() {
           </div>
 
           {isLoading ? (
-            <div className="text-gray-400 dark:text-gray-500 animate-pulse">Unlocking vault...</div>
+            <div className="text-[#78716C] dark:text-[#A8A29E] animate-pulse">Unlocking vault...</div>
           ) : isEditing ? (
             
             <div className="space-y-4 animate-in fade-in duration-300 w-full">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              <p className="text-sm text-[#78716C] dark:text-[#A8A29E] mb-2">
                 Update your allergies, intolerances, and strict dietary rules here. The AI will strictly enforce these rules across all recipes.
               </p>
               <textarea
                 value={dietaryPrefs}
                 onChange={(e) => setDietaryPrefs(e.target.value)}
-                className="w-full p-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900 focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none h-32 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="w-full p-4 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-[#FAF8F5] dark:bg-[#121110] focus:bg-white dark:focus:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all resize-none h-32 text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
                 placeholder="e.g., I am highly allergic to peanuts. I am lactose intolerant..."
               />
               <div className="flex justify-end gap-3 pt-2">
                 <button 
                   onClick={() => setIsEditing(false)}
-                  className="px-5 py-2.5 rounded-xl font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-xl font-medium text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320] transition-colors flex items-center gap-2"
                 >
                   <X className="w-4 h-4" /> Cancel
                 </button>
                 <button 
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center gap-2 shadow-sm"
+                  className="bg-[#C84B31] text-white px-5 py-2.5 rounded-xl font-medium hover:bg-[#B03E26] disabled:opacity-50 transition-colors flex items-center gap-2 shadow-sm"
                 >
                   <Save className="w-4 h-4" /> {isSaving ? "Saving..." : "Save Profile"}
                 </button>
@@ -153,17 +153,17 @@ export default function ProfilePage() {
             
           ) : (
             
-            <div className="w-full bg-gray-50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-700 animate-in fade-in duration-300">
+            <div className="w-full bg-[#FAF8F5] dark:bg-[#121110]/50 p-5 rounded-xl border border-[#E6E1DA] dark:border-[#2E2B28] animate-in fade-in duration-300">
               {dietaryPrefs ? (
-                <p className="text-gray-900 dark:text-gray-200 leading-relaxed whitespace-pre-wrap break-words">
+                <p className="text-[#1C1917] dark:text-[#D6D1C7] leading-relaxed whitespace-pre-wrap break-words">
                   {dietaryPrefs}
                 </p>
               ) : (
                 <div className="text-center py-6 w-full">
-                  <p className="text-gray-500 dark:text-gray-400 italic mb-4">Your medical vault is currently empty.</p>
+                  <p className="text-[#78716C] dark:text-[#A8A29E] italic mb-4">Your medical vault is currently empty.</p>
                   <button 
                     onClick={() => setIsEditing(true)}
-                    className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                    className="text-[#C84B31] dark:text-[#E07A5F] font-medium hover:underline"
                   >
                     Add your dietary restrictions now
                   </button>

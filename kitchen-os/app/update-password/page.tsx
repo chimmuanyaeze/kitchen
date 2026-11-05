@@ -76,9 +76,9 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-6 pb-24 w-full transition-colors duration-200">
-      <div className="w-full max-w-sm bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[#FAF8F5] dark:bg-[#121110] p-6 pb-24 w-full transition-colors duration-200">
+      <div className="w-full max-w-sm bg-white dark:bg-[#1C1A18] p-8 rounded-xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+        <h1 className="text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB] text-center mb-6">
           Welcome to Kitchen OS
         </h1>
         
@@ -90,19 +90,19 @@ export default function LoginPage() {
 
         {/* NEW: Success Message UI */}
         {successMessage && (
-          <div className="bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border border-transparent dark:border-green-800/50 p-3 rounded-md text-sm mb-4 transition-colors">
+          <div className="bg-[#EAF4EF] dark:bg-[#192E25] text-[#2D6A4F] dark:text-[#6FCF97] border border-transparent dark:border-[#315B45] p-3 rounded-md text-sm mb-4 transition-colors">
             {successMessage}
           </div>
         )}
 
         <form className="flex flex-col gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+            <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] mb-1">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+              className="w-full p-2 border border-[#D6D1C7] dark:border-[#2E2B28] rounded-md bg-white dark:bg-[#121110] text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C] focus:outline-none focus:ring-2 focus:ring-[#C84B31] transition-colors"
               placeholder="chef@example.com"
               required
             />
@@ -110,13 +110,13 @@ export default function LoginPage() {
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+              <label className="block text-sm font-medium text-[#44403C] dark:text-[#D6D1C7]">Password</label>
               
               {/* NEW: Forgot Password Link */}
               <button
                 type="button"
                 onClick={handleResetPassword}
-                className="text-xs text-blue-600 dark:text-blue-400 hover:underline focus:outline-none"
+                className="text-xs text-[#C84B31] dark:text-[#E07A5F] hover:underline focus:outline-none"
               >
                 Forgot Password?
               </button>
@@ -125,7 +125,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+              className="w-full p-2 border border-[#D6D1C7] dark:border-[#2E2B28] rounded-md bg-white dark:bg-[#121110] text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C] focus:outline-none focus:ring-2 focus:ring-[#C84B31] transition-colors"
               placeholder="••••••••"
             />
           </div>
@@ -134,7 +134,7 @@ export default function LoginPage() {
             <button
               onClick={handleLogin}
               disabled={loading}
-              className="w-full bg-blue-600 text-white p-2 rounded-md font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              className="w-full bg-[#C84B31] text-white p-2 rounded-md font-medium hover:bg-[#B03E26] disabled:opacity-50 transition-colors"
             >
               {loading ? "Loading..." : "Log In"}
             </button>
@@ -142,7 +142,7 @@ export default function LoginPage() {
             <button
               onClick={handleSignUp}
               disabled={loading}
-              className="w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white p-2 rounded-md font-medium hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 transition-colors"
+              className="w-full bg-[#F3EFEA] dark:bg-[#262320] text-[#1C1917] dark:text-[#F5F2EB] p-2 rounded-md font-medium hover:bg-[#E6E1DA] dark:hover:bg-[#302D29] disabled:opacity-50 transition-colors"
             >
               Create Account
             </button>

@@ -280,8 +280,8 @@ export default function SmartSearchBar({
 
       {/* Attached Photo Preview Chip */}
       {imagePreviewUrl && (
-        <div className="mb-3 inline-flex items-center gap-3 bg-white dark:bg-gray-800 p-2 pr-3 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
-          <div className="w-12 h-12 relative rounded-xl overflow-hidden bg-gray-100 shrink-0">
+        <div className="mb-3 inline-flex items-center gap-3 bg-white dark:bg-[#1C1A18] p-2 pr-3 rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
+          <div className="w-12 h-12 relative rounded-xl overflow-hidden bg-[#F3EFEA] shrink-0">
             <Image
               src={imagePreviewUrl}
               alt="Selected food"
@@ -290,13 +290,13 @@ export default function SmartSearchBar({
             />
           </div>
           <div className="text-xs">
-            <p className="font-bold text-gray-900 dark:text-white">Photo attached</p>
-            <p className="text-gray-500 dark:text-gray-400">Ready for Cook with AI</p>
+            <p className="font-bold text-[#1C1917] dark:text-[#F5F2EB]">Photo attached</p>
+            <p className="text-[#78716C] dark:text-[#A8A29E]">Ready for Cook with AI</p>
           </div>
           <button
             type="button"
             onClick={clearImage}
-            className="p-1.5 text-gray-400 hover:text-red-500 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-1.5 text-[#78716C] hover:text-red-500 rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#262320] transition-colors"
             title="Remove photo"
           >
             <X className="w-4 h-4" />
@@ -309,7 +309,7 @@ export default function SmartSearchBar({
           - Desktop (md+): Single horizontal pill (rounded-full) matching reference */}
       <form
         onSubmit={handleDatabaseSearch}
-        className="relative flex flex-col md:flex-row md:items-center w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl md:rounded-full p-2.5 md:px-3 md:py-2 shadow-md focus-within:ring-2 focus-within:ring-blue-500 transition-all gap-2 md:gap-1.5"
+        className="relative flex flex-col md:flex-row md:items-center w-full bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] rounded-3xl md:rounded-full p-2.5 md:px-3 md:py-2 shadow-md focus-within:ring-2 focus-within:ring-[#C84B31] transition-all gap-2 md:gap-1.5"
       >
         {/* Top Row on Mobile / Left+Center on Desktop */}
         <div className="flex items-center w-full md:flex-1 min-w-0">
@@ -318,7 +318,7 @@ export default function SmartSearchBar({
             <button
               type="button"
               onClick={() => setShowPlusMenu((prev) => !prev)}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+              className="p-2 text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320] rounded-full transition-colors"
               title="Add photo"
               aria-label="Add photo"
             >
@@ -326,21 +326,21 @@ export default function SmartSearchBar({
             </button>
 
             {showPlusMenu && (
-              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-40 animate-in fade-in zoom-in-95 duration-150">
+              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-[#1C1A18] rounded-2xl shadow-xl border border-[#E6E1DA] dark:border-[#2E2B28] py-2 z-40 animate-in fade-in zoom-in-95 duration-150">
                 <button
                   type="button"
                   onClick={() => uploadInputRef.current?.click()}
-                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
+                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#FAF8F5] dark:hover:bg-[#262320]/60 flex items-center gap-3 transition-colors"
                 >
-                  <Upload className="w-4 h-4 text-blue-500" />
+                  <Upload className="w-4 h-4 text-[#C84B31]" />
                   Upload photo
                 </button>
                 <button
                   type="button"
                   onClick={() => cameraInputRef.current?.click()}
-                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/60 flex items-center gap-3 transition-colors"
+                  className="w-full px-4 py-2.5 text-left text-sm font-medium text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#FAF8F5] dark:hover:bg-[#262320]/60 flex items-center gap-3 transition-colors"
                 >
-                  <Camera className="w-4 h-4 text-emerald-500" />
+                  <Camera className="w-4 h-4 text-[#2D6A4F]" />
                   Take photo
                 </button>
               </div>
@@ -356,12 +356,12 @@ export default function SmartSearchBar({
               if (errorBanner) setErrorBanner(null);
             }}
             placeholder="Search recipes or enter your ingredients..."
-            className="w-full flex-1 min-w-[140px] bg-transparent px-2.5 py-1.5 text-sm sm:text-base text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none"
+            className="w-full flex-1 min-w-[140px] bg-transparent px-2.5 py-1.5 text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C] focus:outline-none"
           />
         </div>
 
         {/* Bottom Action Toolbar on Mobile / Right Side on Desktop */}
-        <div className="flex items-center justify-between md:justify-end gap-1.5 pt-2 md:pt-0 border-t border-gray-100 dark:border-gray-700/60 md:border-t-0 shrink-0">
+        <div className="flex items-center justify-between md:justify-end gap-1.5 pt-2 md:pt-0 border-t border-[#E6E1DA] dark:border-[#2E2B28]/60 md:border-t-0 shrink-0">
           {/* Mic & Quick Camera Icons */}
           <div className="flex items-center gap-1">
             <button
@@ -373,11 +373,11 @@ export default function SmartSearchBar({
               className={`p-2 rounded-full transition-all ${
                 isRecording
                   ? "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 animate-pulse"
-                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  : "text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320]"
               }`}
             >
               {isTranscribing ? (
-                <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
+                <Loader2 className="w-5 h-5 animate-spin text-[#C84B31]" />
               ) : (
                 <Mic className="w-5 h-5" />
               )}
@@ -388,7 +388,7 @@ export default function SmartSearchBar({
               onClick={() => cameraInputRef.current?.click()}
               title="Take photo"
               aria-label="Take photo"
-              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+              className="p-2 text-[#44403C] dark:text-[#D6D1C7] hover:bg-[#F3EFEA] dark:hover:bg-[#262320] rounded-full transition-colors"
             >
               <Camera className="w-5 h-5" />
             </button>
@@ -399,7 +399,7 @@ export default function SmartSearchBar({
             <button
               type="submit"
               disabled={isGeneratingAI}
-              className="px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold text-[#44403C] dark:text-[#D6D1C7] bg-[#F3EFEA] dark:bg-[#262320] hover:bg-[#E6E1DA] dark:hover:bg-[#302D29] transition-colors flex items-center gap-1.5"
             >
               <Search className="w-4 h-4" />
               <span>Search</span>
@@ -409,7 +409,7 @@ export default function SmartSearchBar({
               type="button"
               onClick={handleCookWithAI}
               disabled={isGeneratingAI}
-              className="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-95 transition-all shadow-sm flex items-center gap-1.5 disabled:opacity-60 whitespace-nowrap"
+              className="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-[#1C1917] hover:bg-[#292524] text-[#F5F2EB] dark:bg-[#E6D5B8] dark:hover:bg-[#D8C3A0] dark:text-[#1C1917] active:scale-95 transition-all shadow-sm flex items-center gap-1.5 disabled:opacity-60 whitespace-nowrap"
             >
               {isGeneratingAI ? (
                 <>

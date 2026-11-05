@@ -40,47 +40,47 @@ export default function SettingsPage() {
   if (loading) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] pb-24 w-full transition-colors duration-200">
       
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 px-6 py-4 flex items-center gap-4 sticky top-0 z-10 border-b border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200 w-full">
+      <div className="bg-white dark:bg-[#1C1A18] px-6 py-4 flex items-center gap-4 sticky top-0 z-10 border-b border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm transition-colors duration-200 w-full">
         <button
           onClick={() => router.back()}
-          className="p-2 bg-gray-50 dark:bg-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+          className="p-2 bg-[#FAF8F5] dark:bg-[#262320] rounded-full hover:bg-[#F3EFEA] dark:hover:bg-[#302D29] transition-colors"
           title="Go back"
           aria-label="Go back"
         >
-          <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          <ArrowLeft className="w-5 h-5 text-[#44403C] dark:text-[#D6D1C7]" />
         </button>
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <Settings className="w-5 h-5 text-gray-500" /> System Settings
+        <h1 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
+          <Settings className="w-5 h-5 text-[#78716C]" /> System Settings
         </h1>
       </div>
 
       <div className="p-6 max-w-2xl mx-auto mt-4 space-y-6 w-full flex flex-col">
         
         {/* --- THEME TOGGLE CARD --- */}
-        <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-          <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-100 dark:border-gray-700 flex-col sm:flex-row gap-4">
+        <div className="w-full bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+          <div className="flex items-center justify-between p-4 bg-[#FAF8F5] dark:bg-[#121110]/50 rounded-xl border border-[#E6E1DA] dark:border-[#2E2B28] flex-col sm:flex-row gap-4">
             <div>
-              <h3 className="font-bold text-gray-900 dark:text-white">Interface Theme</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Switch between light and dark modes across Kitchen OS.</p>
+              <h3 className="font-bold text-[#1C1917] dark:text-[#F5F2EB]">Interface Theme</h3>
+              <p className="text-sm text-[#78716C] dark:text-[#A8A29E]">Switch between light and dark modes across Kitchen OS.</p>
             </div>
 
             <button
               onClick={toggleTheme}
-              className="p-3 w-full sm:w-auto rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-sm text-gray-700 hover:scale-105 active:scale-95 transition-all flex items-center justify-center"
+              className="p-3 w-full sm:w-auto rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm text-[#44403C] hover:scale-105 active:scale-95 transition-all flex items-center justify-center"
               title="Toggle Theme"
             >
               {isDarkMode ? (
                 <div className="flex items-center gap-2 font-medium text-amber-400">
                   <Sun className="w-5 h-5 fill-current" />
-                  <span className="text-xs text-gray-300">Light Mode</span>
+                  <span className="text-xs text-[#D6D1C7]">Light Mode</span>
                 </div>
               ) : (
-                <div className="flex items-center gap-2 font-medium text-blue-600">
+                <div className="flex items-center gap-2 font-medium text-[#C84B31]">
                   <Moon className="w-5 h-5 fill-current" />
-                  <span className="text-xs text-gray-600">Dark Mode</span>
+                  <span className="text-xs text-[#44403C]">Dark Mode</span>
                 </div>
               )}
             </button>
@@ -88,9 +88,9 @@ export default function SettingsPage() {
         </div>
 
         {/* --- SECURITY & SIGN OUT VIRTUAL ROW --- */}
-        <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">Session Control</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Disconnect your cooking account securely from this device.</p>
+        <div className="w-full bg-white dark:bg-[#1C1A18] p-6 rounded-2xl shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors duration-200">
+          <h3 className="font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">Session Control</h3>
+          <p className="text-sm text-[#78716C] dark:text-[#A8A29E] mb-4">Disconnect your cooking account securely from this device.</p>
           
           <button
             onClick={handleSignOut}

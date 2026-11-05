@@ -869,16 +869,16 @@ export default function RecipeDetailPage() {
   const mainIngredientObj = recipe.recipe_ingredients[selectedMainIndex];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24 w-full transition-colors duration-200">
+    <main className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] pb-24 w-full transition-colors duration-200">
       {/* --- HERO IMAGE BANNER --- */}
-      <div className="w-full relative aspect-video md:h-[400px] md:aspect-auto bg-slate-100 dark:bg-slate-800 overflow-hidden">
+      <div className="w-full relative aspect-video md:h-[400px] md:aspect-auto bg-[#F3EFEA] dark:bg-[#1C1A18] overflow-hidden">
         <button
           type="button"
           title="Go back"
           onClick={() => router.back()}
-          className="absolute top-4 left-4 z-20 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-sm hover:bg-white dark:hover:bg-gray-700 transition-colors"
+          className="absolute top-4 left-4 z-20 p-2 bg-white/90 dark:bg-[#1C1A18]/90 backdrop-blur-sm rounded-full shadow-sm hover:bg-white dark:hover:bg-[#262320] transition-colors"
         >
-          <ArrowLeft className="w-5 h-5 text-gray-900 dark:text-white" />
+          <ArrowLeft className="w-5 h-5 text-[#1C1917] dark:text-[#F5F2EB]" />
         </button>
 
         {recipe.image_url ? (
@@ -891,7 +891,7 @@ export default function RecipeDetailPage() {
             sizes="100vw"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-600">
+          <div className="w-full h-full flex items-center justify-center text-[#A8A29E] dark:text-[#78716C]">
             <ChefHat className="w-16 h-16 sm:w-24 sm:h-24" />
           </div>
         )}
@@ -900,14 +900,14 @@ export default function RecipeDetailPage() {
       </div>
 
       {/* Main Content Layout Block */}
-      <div className="p-6 -mt-6 relative bg-gray-50 dark:bg-gray-900 rounded-t-2xl w-full max-w-4xl mx-auto transition-colors duration-200">
+      <div className="p-6 -mt-6 relative bg-[#FAF8F5] dark:bg-[#121110] rounded-t-2xl w-full max-w-4xl mx-auto transition-colors duration-200">
         {/* Title Block Banner */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 w-full">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+            <h1 className="text-3xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2 leading-tight">
               {recipe.title}
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="text-[#44403C] dark:text-[#A8A29E] text-sm leading-relaxed">
               {recipe.overview || "A delicious recipe curated by Kitchen OS."}
             </p>
           </div>
@@ -917,10 +917,10 @@ export default function RecipeDetailPage() {
               type="button"
               onClick={handleLikeToggle}
               aria-label={isLiked ? "Unlike recipe" : "Like recipe"}
-              className={`p-3 bg-white dark:bg-gray-800 rounded-full shadow-sm transition-all hover:scale-110 active:scale-95 border ${
+              className={`p-3 bg-white dark:bg-[#1C1A18] rounded-full shadow-sm transition-all hover:scale-110 active:scale-95 border ${
                 isLiked
                   ? "border-red-100 dark:border-red-900/50"
-                  : "border-gray-100 dark:border-gray-700"
+                  : "border-[#E6E1DA] dark:border-[#2E2B28]"
               }`}
               title={isLiked ? "Remove from favorites" : "Add to favorites"}
             >
@@ -928,29 +928,29 @@ export default function RecipeDetailPage() {
                 className={`w-5 h-5 transition-colors ${
                   isLiked
                     ? "fill-red-500 text-red-500"
-                    : "text-gray-400 dark:text-gray-500 hover:text-red-500"
+                    : "text-[#78716C] dark:text-[#A8A29E] hover:text-red-500"
                 }`}
                 aria-hidden="true"
               />
             </button>
 
-            <span className="text-sm font-bold text-gray-500 dark:text-gray-400 transition-colors">
+            <span className="text-sm font-bold text-[#78716C] dark:text-[#A8A29E] transition-colors">
               {likeCount} {likeCount === 1 ? "Like" : "Likes"}
             </span>
           </div>
         </div>
 
         {/* Stats Row */}
-        <div className="flex flex-wrap gap-6 mb-8 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-800 pb-6 w-full transition-colors">
+        <div className="flex flex-wrap gap-6 mb-8 text-sm text-[#44403C] dark:text-[#A8A29E] border-b border-[#E6E1DA] dark:border-[#2E2B28] pb-6 w-full transition-colors">
           <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-blue-500" />
+            <Clock className="w-4 h-4 text-[#C84B31]" />
             <span>
               {recipe.prep_time_mins + recipe.cook_time_mins} mins total (
               {recipe.prep_time_mins}m prep / {recipe.cook_time_mins}m cook)
             </span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Users className="w-4 h-4 text-blue-500" />
+            <Users className="w-4 h-4 text-[#C84B31]" />
             <span>
               {estimatedServings} servings{" "}
               {Math.abs(scaleMultiplier - 1) > 0.05 &&
@@ -958,7 +958,7 @@ export default function RecipeDetailPage() {
             </span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Utensils className="w-4 h-4 text-blue-500" />
+            <Utensils className="w-4 h-4 text-[#C84B31]" />
             <span>{recipe.recipe_steps.length} guided voice steps</span>
           </div>
         </div>
@@ -969,7 +969,7 @@ export default function RecipeDetailPage() {
             type="button"
             onClick={triggerPreflight}
             disabled={startingSession}
-            className="flex-1 bg-blue-600 text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-sm"
+            className="flex-1 bg-[#C84B31] text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#B03E26] disabled:opacity-50 transition-colors shadow-sm"
           >
             <Play className="w-5 h-5" />
             {startingSession ? "Starting..." : "Pre-Flight & Cook Now"}
@@ -981,15 +981,15 @@ export default function RecipeDetailPage() {
             disabled={isSaving}
             className={`flex-1 py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-colors shadow-sm border ${
               isSaved
-                ? "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-900/50 text-blue-700 dark:text-blue-400 hover:bg-blue-100"
-                : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700"
+                ? "bg-[#F9EBE8] dark:bg-[#3A201A] border-[#E6B7AA] dark:border-[#5C3329] text-[#9E331E] dark:text-[#E07A5F] hover:bg-[#F9EBE8]"
+                : "bg-white dark:bg-[#1C1A18] border-[#E6E1DA] dark:border-[#2E2B28] text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#FAF8F5] dark:hover:bg-[#262320]"
             }`}
           >
             <BookmarkPlus
               className={`w-5 h-5 ${
                 isSaved
-                  ? "text-blue-600 dark:text-blue-400 fill-current"
-                  : "text-gray-500 dark:text-gray-400"
+                  ? "text-[#C84B31] dark:text-[#E07A5F] fill-current"
+                  : "text-[#78716C] dark:text-[#A8A29E]"
               }`}
             />
             {isSaving ? "Saving..." : isSaved ? "Saved" : "Bookmark"}
@@ -999,19 +999,19 @@ export default function RecipeDetailPage() {
         {/* =================================================================
             1. NON-LINEAR CULINARY SCIENCE & AI PORTION CALCULATOR
            ================================================================= */}
-        <div className="mb-8 bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
+        <div className="mb-8 bg-white dark:bg-[#1C1A18] rounded-2xl p-6 border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <Scale className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
+                <Scale className="w-5 h-5 text-[#C84B31] dark:text-[#E07A5F]" />
                 Smart Portion & Non-Linear Ratio Calculator
               </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+              <p className="text-xs text-[#78716C] dark:text-[#A8A29E] mt-0.5">
                 Structural food scales 100% linearly, while spices (75% rule), thickeners (70%), and cooking oils (surface-area bound) scale sub-linearly so large batches never get over-seasoned or greasy.
               </p>
             </div>
 
-            <div className="inline-flex bg-gray-100 dark:bg-gray-900 p-1 rounded-xl shrink-0 self-start">
+            <div className="inline-flex bg-[#F3EFEA] dark:bg-[#121110] p-1 rounded-xl shrink-0 self-start">
               <button
                 type="button"
                 onClick={() => {
@@ -1021,8 +1021,8 @@ export default function RecipeDetailPage() {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   scaleMode === "main_item"
-                    ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm"
-                    : "text-gray-600 dark:text-gray-400"
+                    ? "bg-white dark:bg-[#1C1A18] text-[#C84B31] dark:text-[#E07A5F] shadow-sm"
+                    : "text-[#44403C] dark:text-[#A8A29E]"
                 }`}
               >
                 By Main Food
@@ -1036,8 +1036,8 @@ export default function RecipeDetailPage() {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   scaleMode === "servings"
-                    ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm"
-                    : "text-gray-600 dark:text-gray-400"
+                    ? "bg-white dark:bg-[#1C1A18] text-[#C84B31] dark:text-[#E07A5F] shadow-sm"
+                    : "text-[#44403C] dark:text-[#A8A29E]"
                 }`}
               >
                 By Servings
@@ -1046,9 +1046,9 @@ export default function RecipeDetailPage() {
           </div>
 
           {scaleMode === "main_item" ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-blue-50/50 dark:bg-blue-950/20 p-4 rounded-xl border border-blue-100 dark:border-blue-900/40">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-[#F9EBE8]/50 dark:bg-[#3A201A]/40 p-4 rounded-xl border border-[#E6B7AA] dark:border-[#5C3329]">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#78716C] dark:text-[#A8A29E] mb-1.5">
                   1. Choose Your Main Staple
                 </label>
                 <select
@@ -1056,7 +1056,7 @@ export default function RecipeDetailPage() {
                   onChange={(e) =>
                     handleMainIngredientSelect(Number(e.target.value))
                   }
-                  className="w-full p-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2.5 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-sm font-medium text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none focus:ring-2 focus:ring-[#C84B31]"
                 >
                   {recipe.recipe_ingredients.map((ri, idx) => (
                     <option key={idx} value={idx}>
@@ -1067,7 +1067,7 @@ export default function RecipeDetailPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#78716C] dark:text-[#A8A29E] mb-1.5">
                   2. How many {mainIngredientObj?.unit || "units"} of{" "}
                   {mainIngredientObj?.ingredients.name} are you cooking?
                 </label>
@@ -1082,19 +1082,19 @@ export default function RecipeDetailPage() {
                       setAiOverrides({});
                       setAiChefNote(null);
                     }}
-                    className="w-full p-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2.5 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none focus:ring-2 focus:ring-[#C84B31]"
                     placeholder={String(mainIngredientObj?.quantity || 1)}
                   />
-                  <span className="text-xs font-bold text-gray-600 dark:text-gray-300 shrink-0 px-2">
+                  <span className="text-xs font-bold text-[#44403C] dark:text-[#D6D1C7] shrink-0 px-2">
                     {mainIngredientObj?.unit || "units"}
                   </span>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="bg-blue-50/50 dark:bg-blue-950/20 p-4 rounded-xl border border-blue-100 dark:border-blue-900/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="bg-[#F9EBE8]/50 dark:bg-[#3A201A]/40 p-4 rounded-xl border border-[#E6B7AA] dark:border-[#5C3329] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1">
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#78716C] dark:text-[#A8A29E] mb-1.5">
                   How many servings / people are you cooking for?
                 </label>
                 <div className="flex items-center gap-2 max-w-xs">
@@ -1108,20 +1108,20 @@ export default function RecipeDetailPage() {
                       setAiOverrides({});
                       setAiChefNote(null);
                     }}
-                    className="w-28 p-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-28 p-2.5 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] focus:outline-none focus:ring-2 focus:ring-[#C84B31]"
                   />
-                  <span className="text-xs font-bold text-gray-600 dark:text-gray-300">
+                  <span className="text-xs font-bold text-[#44403C] dark:text-[#D6D1C7]">
                     servings (Base: {recipe.default_servings})
                   </span>
                 </div>
               </div>
 
               {mainIngredientObj && (
-                <div className="bg-white dark:bg-gray-800 px-4 py-3 rounded-xl border border-blue-200 dark:border-blue-800/60">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block">
+                <div className="bg-white dark:bg-[#1C1A18] px-4 py-3 rounded-xl border border-[#E6B7AA] dark:border-[#5C3329]/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#C84B31] dark:text-[#E07A5F] block">
                     Suggested Main Staple Amount
                   </span>
-                  <span className="text-base font-extrabold text-gray-900 dark:text-white">
+                  <span className="text-base font-extrabold text-[#1C1917] dark:text-[#F5F2EB]">
                     {formatQuantity(
                       (Number(mainIngredientObj.quantity) || 1) * scaleMultiplier
                     )}{" "}
@@ -1134,9 +1134,9 @@ export default function RecipeDetailPage() {
           )}
 
           {/* Optional AI Deep Research Optimization Button */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-gray-100 dark:border-gray-700/60">
-            <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-              <Info className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#E6E1DA] dark:border-[#2E2B28]/60">
+            <p className="text-xs text-[#78716C] dark:text-[#A8A29E] flex items-center gap-1.5">
+              <Info className="w-3.5 h-3.5 text-[#C84B31] shrink-0" />
               <span>
                 Spices use the <strong>75% safe baseline floor</strong>—taste near the end and add the remaining 25% only if needed.
               </span>
@@ -1146,7 +1146,7 @@ export default function RecipeDetailPage() {
               type="button"
               onClick={handleAskAIToOptimize}
               disabled={isCalculatingAI}
-              className="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all shadow-sm flex items-center justify-center gap-1.5 shrink-0 disabled:opacity-60"
+              className="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-[#C84B31] hover:bg-[#B03E26] transition-all shadow-sm flex items-center justify-center gap-1.5 shrink-0 disabled:opacity-60"
             >
               {isCalculatingAI ? (
                 <>
@@ -1163,7 +1163,7 @@ export default function RecipeDetailPage() {
           </div>
 
           {aiChefNote && (
-            <div className="mt-3 p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/60 text-xs text-indigo-900 dark:text-indigo-200">
+            <div className="mt-3 p-3 rounded-xl bg-[#F3EFEA] dark:bg-[#262320] border border-[#E6E1DA] dark:border-[#2E2B28] text-xs text-[#44403C] dark:text-[#D6D1C7]">
               <strong>🤖 AI Chef Ratio Note:</strong> {aiChefNote}
             </div>
           )}
@@ -1175,16 +1175,16 @@ export default function RecipeDetailPage() {
         <div className="mb-8 space-y-6 w-full">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+              <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#2D6A4F]" />
                 Must-Have Ingredients (Essential Base)
               </h2>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full">
+              <span className="text-xs font-semibold text-[#2D6A4F] dark:text-[#6FCF97] bg-[#EAF4EF] dark:bg-[#192E25] px-2.5 py-1 rounded-full">
                 Required for this meal
               </span>
             </div>
 
-            <ul className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden w-full divide-y divide-gray-50 dark:divide-gray-700/50">
+            <ul className="bg-white dark:bg-[#1C1A18] rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm overflow-hidden w-full divide-y divide-[#E6E1DA] dark:divide-[#2E2B28]/50">
               {coreIngredients.map((item, idx: number) => {
                 const key = `core-${idx}`;
                 const disp = getIngredientDisplay(item);
@@ -1199,21 +1199,21 @@ export default function RecipeDetailPage() {
                         [key]: !prev[key],
                       }))
                     }
-                    className="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50/80 dark:hover:bg-gray-700/40 transition-colors"
+                    className="flex justify-between items-center p-4 cursor-pointer hover:bg-[#FAF8F5]/80 dark:hover:bg-[#262320]/40 transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <input
                         type="checkbox"
                         checked={isChecked}
                         onChange={() => {}}
-                        className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        className="w-4 h-4 rounded text-[#C84B31] focus:ring-[#C84B31] cursor-pointer"
                       />
                       <div>
                         <span
                           className={`font-medium capitalize block transition-colors ${
                             isChecked
-                              ? "line-through text-gray-400 dark:text-gray-500"
-                              : "text-gray-900 dark:text-gray-200"
+                              ? "line-through text-[#78716C] dark:text-[#A8A29E]"
+                              : "text-[#1C1917] dark:text-[#D6D1C7]"
                           }`}
                         >
                           {item.ingredients.name}
@@ -1223,7 +1223,7 @@ export default function RecipeDetailPage() {
                             className={`text-[11px] font-medium ${
                               disp.isSubLinear
                                 ? "text-amber-600 dark:text-amber-400"
-                                : "text-gray-400"
+                                : "text-[#78716C]"
                             }`}
                           >
                             {disp.badgeText}
@@ -1233,11 +1233,11 @@ export default function RecipeDetailPage() {
                     </div>
 
                     <div className="text-right">
-                      <span className="text-sm font-bold text-blue-600 dark:text-blue-400">
+                      <span className="text-sm font-bold text-[#C84B31] dark:text-[#E07A5F]">
                         {disp.formattedQty} {item.unit}
                       </span>
                       {Math.abs(scaleMultiplier - 1) > 0.05 && (
-                        <span className="block text-[11px] text-gray-400">
+                        <span className="block text-[11px] text-[#78716C]">
                           (Base: {item.quantity} {item.unit})
                         </span>
                       )}
@@ -1251,7 +1251,7 @@ export default function RecipeDetailPage() {
           {optionalIngredients.length > 0 && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <h2 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-amber-500" />
                   Flavor Enhancers (Optional / Good to Have)
                 </h2>
@@ -1260,7 +1260,7 @@ export default function RecipeDetailPage() {
                 </span>
               </div>
 
-              <ul className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden w-full divide-y divide-gray-50 dark:divide-gray-700/50">
+              <ul className="bg-white dark:bg-[#1C1A18] rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm overflow-hidden w-full divide-y divide-[#E6E1DA] dark:divide-[#2E2B28]/50">
                 {optionalIngredients.map((item, idx: number) => {
                   const key = `opt-${idx}`;
                   const disp = getIngredientDisplay(item);
@@ -1275,7 +1275,7 @@ export default function RecipeDetailPage() {
                           [key]: !prev[key],
                         }))
                       }
-                      className="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50/80 dark:hover:bg-gray-700/40 transition-colors"
+                      className="flex justify-between items-center p-4 cursor-pointer hover:bg-[#FAF8F5]/80 dark:hover:bg-[#262320]/40 transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <input
@@ -1288,8 +1288,8 @@ export default function RecipeDetailPage() {
                           <span
                             className={`font-medium capitalize block transition-colors ${
                               isChecked
-                                ? "line-through text-gray-400 dark:text-gray-500"
-                                : "text-gray-900 dark:text-gray-200"
+                                ? "line-through text-[#78716C] dark:text-[#A8A29E]"
+                                : "text-[#1C1917] dark:text-[#D6D1C7]"
                             }`}
                           >
                             {item.ingredients.name}
@@ -1303,7 +1303,7 @@ export default function RecipeDetailPage() {
                       </div>
 
                       <div className="text-right">
-                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+                        <span className="text-sm font-semibold text-[#44403C] dark:text-[#D6D1C7]">
                           {disp.formattedQty} {item.unit}
                         </span>
                       </div>
@@ -1318,15 +1318,15 @@ export default function RecipeDetailPage() {
         {/* =================================================================
             3. BEFORE YOU TURN ON THE STOVE (Pre-Prep / Mise en Place Guide)
            ================================================================= */}
-        <div className="mb-8 w-full bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
+        <div className="mb-8 w-full bg-white dark:bg-[#1C1A18] rounded-2xl p-6 border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm">
           <div className="mb-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#C84B31] dark:text-[#E07A5F] block mb-1">
               Step 0 • Mise en Place
             </span>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB]">
               Ingredient Preparation (Before You Start Cooking)
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] mt-1">
               Complete these physical prep tasks (washing, peeling, slicing, blending) before turning on the heat so your hands-free cooking session flows smoothly:
             </p>
           </div>
@@ -1345,22 +1345,22 @@ export default function RecipeDetailPage() {
                   }
                   className={`p-4 rounded-xl border transition-all cursor-pointer flex items-start gap-3.5 ${
                     done
-                      ? "bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/40"
-                      : "bg-gray-50 dark:bg-gray-900/60 border-gray-100 dark:border-gray-700/60 hover:border-blue-300"
+                      ? "bg-[#EAF4EF]/40 dark:bg-[#192E25] border-[#B7D8C6] dark:border-[#315B45]"
+                      : "bg-[#FAF8F5] dark:bg-[#121110]/60 border-[#E6E1DA] dark:border-[#2E2B28]/60 hover:border-[#C84B31]"
                   }`}
                 >
                   <input
                     type="checkbox"
                     checked={done}
                     onChange={() => {}}
-                    className="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer shrink-0"
+                    className="mt-1 w-4 h-4 rounded text-[#2D6A4F] focus:ring-[#2D6A4F] cursor-pointer shrink-0"
                   />
                   <div className="text-sm">
                     <span
                       className={`font-bold capitalize block mb-0.5 ${
                         done
-                          ? "line-through text-gray-400 dark:text-gray-500"
-                          : "text-gray-900 dark:text-white"
+                          ? "line-through text-[#78716C] dark:text-[#A8A29E]"
+                          : "text-[#1C1917] dark:text-[#F5F2EB]"
                       }`}
                     >
                       Prep {task.item}
@@ -1368,8 +1368,8 @@ export default function RecipeDetailPage() {
                     <p
                       className={`leading-relaxed ${
                         done
-                          ? "line-through text-gray-400 dark:text-gray-500"
-                          : "text-gray-600 dark:text-gray-300"
+                          ? "line-through text-[#78716C] dark:text-[#A8A29E]"
+                          : "text-[#44403C] dark:text-[#D6D1C7]"
                       }`}
                     >
                       {task.action}
@@ -1380,15 +1380,15 @@ export default function RecipeDetailPage() {
             })}
           </div>
 
-          <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs text-gray-500 dark:text-gray-400">
+          <div className="mt-6 pt-4 border-t border-[#E6E1DA] dark:border-[#2E2B28] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-[#78716C] dark:text-[#A8A29E]">
               Once your ingredients are prepped on the counter, launch the interactive voice guide for all{" "}
               <strong>{recipe.recipe_steps.length} cooking steps</strong>.
             </div>
             <button
               type="button"
               onClick={triggerPreflight}
-              className="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-colors shrink-0 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-5 py-2.5 bg-[#C84B31] hover:bg-[#B03E26] text-white text-sm font-bold rounded-xl transition-colors shrink-0 flex items-center justify-center gap-2"
             >
               <Play className="w-4 h-4" />
               Open Pre-Flight Checklist
@@ -1401,25 +1401,25 @@ export default function RecipeDetailPage() {
           INTERACTIVE PRE-FLIGHT CHECKLIST & PORTION MODAL OVERLAY
          ================================================================= */}
       {showPreflight && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 dark:bg-gray-950/80 backdrop-blur-sm transition-opacity overflow-y-auto">
-          <div className="bg-white dark:bg-gray-900 border border-transparent dark:border-gray-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl animate-in fade-in zoom-in duration-200 transition-colors my-8 max-h-[90vh] flex flex-col">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1C1A18]/60 dark:bg-[#121110]/80 backdrop-blur-sm transition-opacity overflow-y-auto">
+          <div className="bg-white dark:bg-[#121110] border border-transparent dark:border-[#2E2B28] w-full max-w-lg rounded-3xl p-6 shadow-2xl animate-in fade-in zoom-in duration-200 transition-colors my-8 max-h-[90vh] flex flex-col">
+            <h3 className="text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-1">
               Pre-Flight Counter & Portion Check
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-4">
+            <p className="text-[#78716C] dark:text-[#A8A29E] text-xs sm:text-sm mb-4">
               Spices and oils are scaled using the <strong>75% sub-linear rule</strong> and surface-area dynamics so your dish stays balanced.
             </p>
 
             {/* Quick Portion Controls Inside Modal */}
-            <div className="bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 rounded-2xl p-3.5 mb-4">
+            <div className="bg-[#F9EBE8]/70 dark:bg-[#3A201A]/40 border border-[#E6B7AA] dark:border-[#5C3329] rounded-2xl p-3.5 mb-4">
               <div className="flex gap-2 mb-3">
                 <button
                   type="button"
                   onClick={() => setScaleMode("main_item")}
                   className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     scaleMode === "main_item"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                      ? "bg-[#C84B31] text-white shadow-sm"
+                      : "bg-white dark:bg-[#1C1A18] text-[#44403C] dark:text-[#D6D1C7]"
                   }`}
                 >
                   Measure by Main Food
@@ -1429,8 +1429,8 @@ export default function RecipeDetailPage() {
                   onClick={() => setScaleMode("servings")}
                   className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     scaleMode === "servings"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                      ? "bg-[#C84B31] text-white shadow-sm"
+                      : "bg-white dark:bg-[#1C1A18] text-[#44403C] dark:text-[#D6D1C7]"
                   }`}
                 >
                   Measure by Servings
@@ -1444,7 +1444,7 @@ export default function RecipeDetailPage() {
                     onChange={(e) =>
                       handleMainIngredientSelect(Number(e.target.value))
                     }
-                    className="w-full sm:w-1/2 p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-gray-900 dark:text-white"
+                    className="w-full sm:w-1/2 p-2 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-xs font-bold text-[#1C1917] dark:text-[#F5F2EB]"
                   >
                     {recipe.recipe_ingredients.map((ri, idx) => (
                       <option key={idx} value={idx}>
@@ -1463,16 +1463,16 @@ export default function RecipeDetailPage() {
                         setAiOverrides({});
                         setAiChefNote(null);
                       }}
-                      className="w-full p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-gray-900 dark:text-white"
+                      className="w-full p-2 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-xs font-bold text-[#1C1917] dark:text-[#F5F2EB]"
                     />
-                    <span className="text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">
+                    <span className="text-xs font-bold text-[#44403C] dark:text-[#D6D1C7] shrink-0">
                       {mainIngredientObj?.unit}
                     </span>
                   </div>
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">
+                  <span className="text-xs font-bold text-[#44403C] dark:text-[#D6D1C7]">
                     Number of Servings:
                   </span>
                   <input
@@ -1481,15 +1481,15 @@ export default function RecipeDetailPage() {
                     step="1"
                     value={customServings}
                     onChange={(e) => setCustomServings(e.target.value)}
-                    className="w-24 p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-center text-gray-900 dark:text-white"
+                    className="w-24 p-2 rounded-xl bg-white dark:bg-[#1C1A18] border border-[#E6E1DA] dark:border-[#2E2B28] text-xs font-bold text-center text-[#1C1917] dark:text-[#F5F2EB]"
                   />
                 </div>
               )}
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-4 mb-5 overflow-y-auto border border-gray-100 dark:border-gray-700 text-sm space-y-4 flex-1">
+            <div className="bg-[#FAF8F5] dark:bg-[#1C1A18]/50 rounded-2xl p-4 mb-5 overflow-y-auto border border-[#E6E1DA] dark:border-[#2E2B28] text-sm space-y-4 flex-1">
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#2D6A4F] dark:text-[#6FCF97] mb-2">
                   Must-Have Ingredients (Non-Linear Balanced)
                 </h4>
                 <ul className="space-y-2">
@@ -1498,19 +1498,19 @@ export default function RecipeDetailPage() {
                     return (
                       <li
                         key={idx}
-                        className="flex justify-between items-center text-gray-800 dark:text-gray-200 text-xs sm:text-sm"
+                        className="flex justify-between items-center text-[#44403C] dark:text-[#D6D1C7] text-xs sm:text-sm"
                       >
                         <div>
                           <span className="font-medium capitalize">
                             • {item.ingredients.name}
                           </span>
                           {Math.abs(scaleMultiplier - 1) > 0.05 && (
-                            <span className="block text-[10px] text-gray-400 pl-2.5">
+                            <span className="block text-[10px] text-[#78716C] pl-2.5">
                               {disp.badgeText}
                             </span>
                           )}
                         </div>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">
+                        <span className="font-bold text-[#C84B31] dark:text-[#E07A5F]">
                           {disp.formattedQty} {item.unit}
                         </span>
                       </li>
@@ -1520,7 +1520,7 @@ export default function RecipeDetailPage() {
               </div>
 
               {optionalIngredients.length > 0 && (
-                <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-3 border-t border-[#E6E1DA] dark:border-[#2E2B28]">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2">
                     Optional Flavor Enhancers
                   </h4>
@@ -1530,7 +1530,7 @@ export default function RecipeDetailPage() {
                       return (
                         <li
                           key={idx}
-                          className="flex justify-between text-gray-600 dark:text-gray-400 text-xs sm:text-sm"
+                          className="flex justify-between text-[#44403C] dark:text-[#A8A29E] text-xs sm:text-sm"
                         >
                           <span className="capitalize">
                             • {item.ingredients.name}
@@ -1550,7 +1550,7 @@ export default function RecipeDetailPage() {
               <button
                 type="button"
                 onClick={() => setShowPreflight(false)}
-                className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-3 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="flex-1 bg-[#F3EFEA] dark:bg-[#1C1A18] text-[#1C1917] dark:text-[#F5F2EB] py-3 rounded-xl font-medium hover:bg-[#E6E1DA] dark:hover:bg-[#262320] transition-colors"
               >
                 Still Prepping
               </button>
@@ -1558,7 +1558,7 @@ export default function RecipeDetailPage() {
                 type="button"
                 onClick={confirmAndStartCooking}
                 disabled={startingSession}
-                className="flex-1 bg-blue-600 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-sm text-center"
+                className="flex-1 bg-[#C84B31] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#B03E26] disabled:opacity-50 transition-colors shadow-sm text-center"
               >
                 {startingSession ? "Starting..." : "Let's Cook"}
               </button>
@@ -1569,8 +1569,8 @@ export default function RecipeDetailPage() {
 
       {/* --- REVIEWS SECTION --- */}
       <div className="max-w-4xl mx-auto px-6 pb-24 w-full">
-        <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 mt-8 transition-colors duration-200 w-full">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#1C1A18] rounded-3xl p-8 shadow-sm border border-[#E6E1DA] dark:border-[#2E2B28] mt-8 transition-colors duration-200 w-full">
+          <h2 className="text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-8 flex items-center gap-2">
             <Star className="w-6 h-6 text-amber-400 fill-current" />
             Chef Reviews ({reviews.length})
           </h2>
@@ -1578,9 +1578,9 @@ export default function RecipeDetailPage() {
           {currentUserId ? (
             <form
               onSubmit={handleSubmitReview}
-              className="mb-10 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 transition-colors w-full"
+              className="mb-10 bg-[#FAF8F5] dark:bg-[#121110]/50 p-6 rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] transition-colors w-full"
             >
-              <h3 className="font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4">
                 Leave a Review
               </h3>
 
@@ -1599,7 +1599,7 @@ export default function RecipeDetailPage() {
                       className={`w-8 h-8 transition-colors ${
                         star <= (hoveredStar || rating)
                           ? "fill-amber-400 text-amber-400"
-                          : "text-gray-300 dark:text-gray-600"
+                          : "text-[#D6D1C7] dark:text-[#44403C]"
                       }`}
                     />
                   </button>
@@ -1610,35 +1610,35 @@ export default function RecipeDetailPage() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="What did you think of this recipe? (Optional)"
-                className="w-full p-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none h-24 mb-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="w-full p-4 border border-[#E6E1DA] dark:border-[#2E2B28] rounded-xl bg-white dark:bg-[#1C1A18] focus:ring-2 focus:ring-[#C84B31] outline-none transition-all resize-none h-24 mb-4 text-[#1C1917] dark:text-[#F5F2EB] placeholder:text-[#8C857B] dark:placeholder:text-[#78716C]"
               />
 
               <button
                 type="submit"
                 disabled={isSubmittingReview}
-                className="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                className="bg-[#C84B31] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#B03E26] disabled:opacity-50 transition-colors"
               >
                 {isSubmittingReview ? "Posting..." : "Post Review"}
               </button>
             </form>
           ) : (
-            <div className="mb-10 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 text-center transition-colors w-full">
-              <p className="text-gray-500 dark:text-gray-400">
+            <div className="mb-10 bg-[#FAF8F5] dark:bg-[#121110]/50 p-6 rounded-2xl border border-[#E6E1DA] dark:border-[#2E2B28] text-center transition-colors w-full">
+              <p className="text-[#78716C] dark:text-[#A8A29E]">
                 Please log in to share your thoughts.
               </p>
             </div>
           )}
 
-          <div className="space-y-6 divide-y divide-gray-100 dark:divide-gray-700 w-full">
+          <div className="space-y-6 divide-y divide-[#E6E1DA] dark:divide-[#2E2B28] w-full">
             {reviews.length === 0 ? (
-              <p className="text-gray-500 dark:text-gray-400 text-center italic py-4">
+              <p className="text-[#78716C] dark:text-[#A8A29E] text-center italic py-4">
                 No reviews yet. Be the first to rate this recipe!
               </p>
             ) : (
               reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="border-b border-gray-100 dark:border-gray-700/50 pb-6 last:border-0 last:pb-0 pt-6 first:pt-0 w-full transition-colors"
+                  className="border-b border-[#E6E1DA] dark:border-[#2E2B28]/50 pb-6 last:border-0 last:pb-0 pt-6 first:pt-0 w-full transition-colors"
                 >
                   <div className="flex items-center gap-2 mb-2 w-full">
                     <div className="flex gap-0.5">
@@ -1648,20 +1648,20 @@ export default function RecipeDetailPage() {
                           className={`w-4 h-4 ${
                             star <= review.rating
                               ? "fill-amber-400 text-amber-400"
-                              : "text-gray-200 dark:text-gray-600"
+                              : "text-[#D6D1C7] dark:text-[#44403C]"
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="text-sm font-medium text-gray-900 dark:text-white ml-2">
+                    <span className="text-sm font-medium text-[#1C1917] dark:text-[#F5F2EB] ml-2">
                       A Fellow Chef
                     </span>
-                    <span className="text-xs text-gray-400 dark:text-gray-500 ml-auto">
+                    <span className="text-xs text-[#78716C] dark:text-[#A8A29E] ml-auto">
                       {new Date(review.created_at).toLocaleDateString()}
                     </span>
                   </div>
                   {review.comment && (
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
+                    <p className="text-[#44403C] dark:text-[#D6D1C7] leading-relaxed mt-2">
                       {review.comment}
                     </p>
                   )}

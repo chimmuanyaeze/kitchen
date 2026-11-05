@@ -55,11 +55,11 @@ export default function ExplorePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pb-24 w-full transition-colors duration-200">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+    <main className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] p-6 pb-24 w-full transition-colors duration-200">
+      <h1 className="text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">
         Explore Recipes
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
+      <p className="text-[#44403C] dark:text-[#A8A29E] mb-6">
         Find your next meal from our database.
       </p>
 

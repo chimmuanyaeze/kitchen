@@ -16,12 +16,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="block fixed top-0 left-0 right-0 w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 px-6 py-3.5 md:py-4 z-[100] shadow-sm transition-colors duration-200">
+    <nav className="block fixed top-0 left-0 right-0 w-full bg-white dark:bg-[#121110] border-b border-[#E6E1DA] dark:border-[#2E2B28] px-6 py-3.5 md:py-4 z-[100] shadow-sm transition-colors duration-200">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Logo + Brand Name (Visible on ALL screen sizes, including mobile) */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-black text-lg md:text-xl text-gray-900 dark:text-white"
+          className="flex items-center gap-2 font-black text-lg md:text-xl text-[#1C1917] dark:text-[#F5F2EB]"
         >
           <Image
             src="/logo.png"
@@ -46,8 +46,8 @@ export default function Navbar() {
                 href={item.path}
                 className={`flex items-center gap-1.5 font-medium transition-colors ${
                   isActive
-                    ? "text-blue-600 dark:text-blue-500"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    ? "text-[#C84B31] dark:text-[#E07A5F]"
+                    : "text-[#44403C] dark:text-[#A8A29E] hover:text-[#1C1917] dark:hover:text-white"
                 }`}
               >
                 <Icon className="w-4 h-4" />

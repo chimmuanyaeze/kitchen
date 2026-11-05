@@ -182,12 +182,12 @@ export default function RecipeCard({
       onContextMenu={(e) => {
         if (isAdmin) e.preventDefault();
       }}
-      className={`group flex flex-col h-full w-full bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative select-none ${
+      className={`group flex flex-col h-full w-full bg-white dark:bg-[#1C1A18] rounded-2xl sm:rounded-3xl border border-[#E6E1DA] dark:border-[#2E2B28] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative select-none ${
         isDeleting ? "opacity-50 pointer-events-none" : ""
       }`}
     >
       {/* Image Header - Strictly locked 16:9 ratio & shrink-0 so it never warps */}
-      <div className="w-full aspect-video shrink-0 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+      <div className="w-full aspect-video shrink-0 bg-[#F3EFEA] dark:bg-[#1C1A18] relative overflow-hidden">
         {recipe.image_url ? (
           <Image
             src={recipe.image_url}
@@ -198,7 +198,7 @@ export default function RecipeCard({
             className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-slate-300 dark:text-slate-600">
+          <div className="w-full h-full flex items-center justify-center text-[#A8A29E] dark:text-[#78716C]">
             <ChefHat className="w-8 h-8 sm:w-12 sm:h-12" />
           </div>
         )}
@@ -217,7 +217,7 @@ export default function RecipeCard({
               onClick={handleEditClick}
               title="Edit Recipe"
               aria-label="Edit Recipe"
-              className="p-2 sm:p-2.5 bg-blue-600/95 hover:bg-blue-700 text-white backdrop-blur-sm rounded-full shadow-md hover:scale-110 active:scale-95 transition-all"
+              className="p-2 sm:p-2.5 bg-[#C84B31]/95 hover:bg-[#B03E26] text-white backdrop-blur-sm rounded-full shadow-md hover:scale-110 active:scale-95 transition-all"
             >
               <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
@@ -243,7 +243,7 @@ export default function RecipeCard({
                 }}
                 title="Close menu"
                 aria-label="Close menu"
-                className="p-2 bg-gray-900/80 text-white backdrop-blur-sm rounded-full shadow-md md:hidden"
+                className="p-2 bg-[#1C1A18]/80 text-white backdrop-blur-sm rounded-full shadow-md md:hidden"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -257,13 +257,13 @@ export default function RecipeCard({
           title="like"
           onClick={handleLikeToggle}
           aria-label={isLiked ? "Unlike recipe" : "Like recipe"}
-          className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 p-2 sm:p-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all"
+          className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 p-2 sm:p-3 bg-white/90 dark:bg-[#1C1A18]/90 backdrop-blur-sm rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all"
         >
           <Heart
             className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
               isLiked
                 ? "fill-red-500 text-red-500"
-                : "text-gray-400 dark:text-gray-500"
+                : "text-[#78716C] dark:text-[#A8A29E]"
             }`}
             aria-hidden="true"
           />
@@ -275,7 +275,7 @@ export default function RecipeCard({
         <div>
           <div className="flex justify-between items-start gap-2 sm:gap-4 mb-1.5 sm:mb-2">
             {/* min-h reserves exact 2-line height even for 1-line titles */}
-            <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 min-h-[2.75rem] sm:min-h-[3.5rem]">
+            <h3 className="text-base sm:text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] leading-snug group-hover:text-[#C84B31] dark:group-hover:text-[#E07A5F] transition-colors line-clamp-2 min-h-[2.75rem] sm:min-h-[3.5rem]">
               {recipe.title}
             </h3>
 
@@ -286,15 +286,15 @@ export default function RecipeCard({
           </div>
 
           {/* min-h reserves exact 2-line height even for short overviews */}
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] mb-3 sm:mb-4 leading-relaxed transition-colors">
+          <p className="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] mb-3 sm:mb-4 leading-relaxed transition-colors">
             {recipe.overview || "A delicious Kitchen OS recipe ready to be cooked."}
           </p>
         </div>
 
         {/* Time footer - mt-auto locks it to the bottom edge of every card */}
-        <div className="mt-auto pt-2 border-t border-gray-50 dark:border-gray-700/50 flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium transition-colors">
+        <div className="mt-auto pt-2 border-t border-[#E6E1DA] dark:border-[#2E2B28]/50 flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] font-medium transition-colors">
           <div className="flex items-center gap-1 sm:gap-1.5">
-            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500 shrink-0" />
+            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C84B31] shrink-0" />
             <span>{recipe.prep_time_mins + recipe.cook_time_mins} mins total</span>
           </div>
         </div>
